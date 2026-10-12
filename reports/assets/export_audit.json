@@ -1,20 +1,6 @@
 {
   "manifest_exports_checked": 9,
-  "manifest_hash_errors": [
-    "Source changed: docs/architecture/adr/0001-web-app-stack.md",
-    "Source changed: docs/architecture/adr/0002-persistence-and-idempotency.md",
-    "Source changed: docs/architecture/adr/0003-versioned-api-contract.md",
-    "Source changed: docs/architecture/adr/0004-container-responsibilities.md",
-    "Source changed: docs/architecture/adr/index.md",
-    "Source changed: docs/architecture/index.md",
-    "Source changed: docs/architecture/ue-4-rework.md",
-    "Source changed: docs/requirements/mockups/index.md",
-    "Source changed: docs/requirements/scope.md",
-    "Source changed: docs/requirements/srs.md",
-    "Source changed: docs/requirements/traceability.md",
-    "Source changed: docs/semesters/week-03.md",
-    "Source changed: docs/semesters/week-04.md"
-  ],
+  "manifest_hash_errors": [],
   "pdf_pages": 100,
   "keyword_pages": {
     "Архитектурын диаграм": [

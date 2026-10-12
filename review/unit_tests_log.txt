@@ -50,7 +50,7 @@ test_two_item_example_is_39000 (test_order_service.OrderServiceTests.test_two_it
 test_zero_delivery_fee (test_order_service.OrderServiceTests.test_zero_delivery_fee) ... ok
 
 ----------------------------------------------------------------------
-Ran 49 tests in 4.070s
+Ran 49 tests in 4.901s
 
 OK
 

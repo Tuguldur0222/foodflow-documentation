@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T01:32:03+08:00",
+  "generated_at": "2026-10-13T01:37:09+08:00",
   "client_date": "2026-10-13",
   "canonical_source": "repository Markdown",
   "source_repository": "https://github.com/Tuguldur0222/foodflow-documentation",
@@ -249,13 +249,13 @@
         "docs/api/sample-audit.md": "d1ce50ebfca494a61f695bf4e6a42d49896eda94c13cb6d28fb027c22b7df78a",
         "docs/api/renderer-decision.md": "9b0d009a6a843edd5de960afbfb9502ab8f2b37997cd3ad101d41c85dc96f253",
         "review/bhatti_audit_table.md": "bfde9a528221164f43960354740c9635f967f9a7900c0176f86851b2f41b48d2",
-        "review/technical_debt.md": "0a5c2af34cc747b5f3d0280a2e26f011f946d171f30f1da3fe421a541647b74c",
-        "docs/project/status.md": "65cd389ed174f09a901a69ea503769acc3259b9e10ce272050f56f8403bd6fc4",
+        "review/technical_debt.md": "163a0a4065d2fa6c2ee124ffb694b75d0c2285bf22d8897f73db3615023423ee",
+        "docs/project/status.md": "76a4eef00bdbc3e002589f0635d86edb25434225f44fe5dc42877414917f52a9",
         "docs/project/provenance.md": "8dd3d0ebdf88a27f2d0445c6077acbe0f2da2ea3a6793709eb6680d5e1d25443",
         "docs/project/roadmap.md": "4db09804a2a57de1b1abd88d68d6a8ab07816b5a03d7a4306e7fe7c70af18056"
       },
-      "pdf_sha256": "db50501fcc570aaf36124a91eff29607fc7450c75360dca0c48e7d0bc95db37c",
-      "docx_sha256": "e6f9e9dcda29e715bbb927938339ec35a3462bf7352c0bf5f63ef3eba4e14c63",
+      "pdf_sha256": "5e02e274dc1734c875c38a59a8fca896f5082fa4711b83d63ea09ce6948c4cfb",
+      "docx_sha256": "86284410895f641a0650c4796396c1f07a1d88555fcb4e30696e32a7fb0442f1",
       "validation": {
         "docx_zip_xml": "passed",
         "docx_complete_block_text": "passed",

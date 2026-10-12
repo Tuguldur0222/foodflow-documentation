@@ -1,4 +1,4 @@
 $ C:\Users\tuugu\anaconda3\python.exe tools/check_repository.py
-41 Markdown files; 333 local links OK; 15 FR + 5 NFR present.
+42 Markdown files; 339 local links OK; 15 FR + 5 NFR present.
 
 EXIT CODE: 0

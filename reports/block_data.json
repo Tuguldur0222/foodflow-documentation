@@ -22717,7 +22717,7 @@
     },
     {
       "source": "review/technical_debt.md",
-      "sha256": "0a5c2af34cc747b5f3d0280a2e26f011f946d171f30f1da3fe421a541647b74c",
+      "sha256": "163a0a4065d2fa6c2ee124ffb694b75d0c2285bf22d8897f73db3615023423ee",
       "title": "Техникийн өрийн бүртгэл",
       "blocks": [
         {
@@ -22823,14 +22823,28 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "2026-10-13-нд GitHub issue үүсгэх оролдлого "
+              "text": "2026-10-13-нд эхний GitHub integration оролдлого "
             },
             {
-              "text": "403: Resource not accessible by integration",
+              "text": "403",
               "code": true
             },
             {
-              "text": " хариу өгсөн. Issue үүсээгүй тул бодит дугаар, URL зохиогоогүй. GitLab дээр мөн issue үүсгээгүй. HTTP/JWT холболт, сагснаас сервер талд үнэ тооцох, хүргэлтийн хаяг шалгах, төлбөрийн үйлчилгээтэй холбох ажил дараагийн хэрэгжилтэд үлдэнэ."
+              "text": " хариу өгсөн. Хэрэглэгч GitHub CLI нэвтрэлтийг баталгаажуулсны дараа "
+            },
+            {
+              "url": "https://github.com/Tuguldur0222/foodflow-documentation/issues/1",
+              "text": "issue #1"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "url": "https://github.com/Tuguldur0222/foodflow-documentation/issues/2",
+              "text": "issue #2"
+            },
+            {
+              "text": "-ыг бодитоор үүсгэв. GitLab дээр issue үүсгээгүй. HTTP/JWT холболт, сагснаас сервер талд үнэ тооцох, хүргэлтийн хаяг шалгах, төлбөрийн үйлчилгээтэй холбох ажил дараагийн хэрэгжилтэд үлдэнэ."
             }
           ]
         },
@@ -22859,7 +22873,7 @@
     },
     {
       "source": "docs/project/status.md",
-      "sha256": "65cd389ed174f09a901a69ea503769acc3259b9e10ce272050f56f8403bd6fc4",
+      "sha256": "76a4eef00bdbc3e002589f0635d86edb25434225f44fe5dc42877414917f52a9",
       "title": "Шалгуур ба нотолгооны бүртгэл",
       "blocks": [
         {
@@ -23196,7 +23210,11 @@
                   "text": "Source"
                 },
                 {
-                  "text": "; commit-оор шалгана"
+                  "text": "; commit-ийн мэдээлэл "
+                },
+                {
+                  "url": "https://github.com/Tuguldur0222/foodflow-documentation/blob/main/docs/project/github-verification.md",
+                  "text": "нийтлэлийн бүртгэлд"
                 }
               ]
             ],
@@ -23208,7 +23226,14 @@
               ],
               [
                 {
-                  "text": "Workflow бэлтгэсэн; run URL ба commit SHA-аар баталгаажуулна"
+                  "text": "Run URL, commit SHA болон үр дүнг "
+                },
+                {
+                  "url": "https://github.com/Tuguldur0222/foodflow-documentation/blob/main/docs/project/github-verification.md",
+                  "text": "нийтлэлийн бүртгэлээс"
+                },
+                {
+                  "text": " шалгана"
                 }
               ]
             ],
@@ -23244,21 +23269,25 @@
               ],
               [
                 {
-                  "text": "GitHub integration "
+                  "text": "GitHub CLI-гаар "
                 },
                 {
-                  "text": "403",
-                  "code": true
+                  "url": "https://github.com/Tuguldur0222/foodflow-documentation/issues/1",
+                  "text": "#1"
                 },
                 {
-                  "text": " хариу өгсөн тул үүсээгүй; "
+                  "text": ", "
+                },
+                {
+                  "url": "https://github.com/Tuguldur0222/foodflow-documentation/issues/2",
+                  "text": "#2"
+                },
+                {
+                  "text": " үүсгэсэн; "
                 },
                 {
                   "url": "https://github.com/Tuguldur0222/foodflow-documentation/blob/main/review/technical_debt.md",
                   "text": "техникийн өрийн бүртгэл"
-                },
-                {
-                  "text": "-д бэлэн даалгаврын эх бий"
                 }
               ]
             ]

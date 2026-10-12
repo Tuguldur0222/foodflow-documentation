@@ -2,6 +2,8 @@
 
 # FoodFlow · Програм хангамжийн төслийн баримтжуулалт
 
+[![Баримт ба тест](https://github.com/Tuguldur0222/foodflow-documentation/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/Tuguldur0222/foodflow-documentation/actions/workflows/quality.yml)
+
 **Онлайн хоол захиалгын системийн шаардлага, архитектур, API, кодын баримтжуулалтыг нэг эх сурвалжаас унших төсөл.**
 
 Ю. Төгөлдөр · 23B1NUM2350 · МУИС · Семинар 01–06 · Шинэчилсэн: **2026-10-13**
@@ -21,7 +23,7 @@
 | 05 | OpenAPI 3.0.3, ажиллах кодын жишээ | [W05](docs/semesters/week-05.md) | [API reference](docs/api/README.md), [OpenAPI](docs/api/openapi.yaml) |
 | 06 | Google-style docstring, Sphinx, AI аудит | [W06](docs/semesters/week-06.md) | [Python API](docs/source/api.rst), [аудит](review/bhatti_audit_table.md) |
 
-[Нэгдсэн шалгуур ба нотолгоо](docs/project/status.md) · [Хийсэн засвар](CHANGELOG.md) · [Эх сурвалж, гарал](docs/project/provenance.md)
+[Нэгдсэн шалгуур ба нотолгоо](docs/project/status.md) · [GitHub шалгалт](docs/project/github-verification.md) · [Хийсэн засвар](CHANGELOG.md) · [Эх сурвалж, гарал](docs/project/provenance.md)
 
 Засварлаж болох [нэгдсэн Word тайлан](reports/FoodFlow_Documentation.docx), хэвлэхэд зориулсан [PDF тайлан](reports/FoodFlow_Documentation.pdf), [семинар бүрийн тусдаа хувилбар](reports/README.md) бэлэн.
 

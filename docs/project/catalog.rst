@@ -12,6 +12,7 @@
    ../../docs/architecture/adr/0004-container-responsibilities
    ../../docs/architecture/adr/index
    ../../docs/architecture/ue-4-rework
+   ../../docs/project/github-verification
    ../../docs/project/issues/confirmed-cancellation
    ../../docs/project/issues/durable-orders
    ../../docs/requirements/mockups/index

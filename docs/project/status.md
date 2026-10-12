@@ -25,8 +25,8 @@ OpenAPI-г Redocly 2.62.1-ээр шалгахад алдаа гараагүй, �
 
 | Үйлчилгээ | Баталгааны утга |
 |---|---|
-| GitHub repository | [Source](https://github.com/Tuguldur0222/foodflow-documentation); commit-оор шалгана |
-| GitHub Actions | Workflow бэлтгэсэн; run URL ба commit SHA-аар баталгаажуулна |
+| GitHub repository | [Source](https://github.com/Tuguldur0222/foodflow-documentation); commit-ийн мэдээлэл [нийтлэлийн бүртгэлд](github-verification.md) |
+| GitHub Actions | Run URL, commit SHA болон үр дүнг [нийтлэлийн бүртгэлээс](github-verification.md) шалгана |
 | GitHub Pages | Optional workflow; URL батлагдах хүртэл live гэж тооцохгүй |
 | GitLab CI/Pages | Тохируулга бий; GitLab project/run/URL ирээгүй |
 | Issues | GitHub CLI-гаар [#1](https://github.com/Tuguldur0222/foodflow-documentation/issues/1), [#2](https://github.com/Tuguldur0222/foodflow-documentation/issues/2) үүсгэсэн; [техникийн өрийн бүртгэл](../../review/technical_debt.md) |
