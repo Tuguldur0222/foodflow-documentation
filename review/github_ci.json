@@ -1,0 +1,68 @@
+{
+  "verified_on": "2026-10-13",
+  "timezone": "Asia/Ulaanbaatar",
+  "repository": "https://github.com/Tuguldur0222/foodflow-documentation",
+  "commit": "c1271d3cb354b01da214badf81d99f411598233f",
+  "run": {
+    "id": 38286161079,
+    "url": "https://github.com/Tuguldur0222/foodflow-documentation/actions/runs/38286161079",
+    "conclusion": "success"
+  },
+  "jobs": [
+    {
+      "id": 114934936208,
+      "name": "Python 3.11 · тест ба баримт",
+      "conclusion": "success",
+      "url": "https://github.com/Tuguldur0222/foodflow-documentation/actions/runs/38286161079/job/114934936208",
+      "evidence": [
+        "2026-10-12T17:44:18.3903702Z unit_tests exit= 0",
+        "2026-10-12T17:44:18.3910443Z Ran 49 tests in 1.720s",
+        "2026-10-12T17:44:18.3917454Z 25 tests in 7 items.",
+        "2026-10-12T17:44:18.3917842Z 25 passed and 0 failed.",
+        "2026-10-12T17:44:18.3924691Z   25 tests in default",
+        "2026-10-12T17:44:18.3925049Z 25 tests in 1 items.",
+        "2026-10-12T17:44:18.3925428Z 25 passed and 0 failed.",
+        "2026-10-12T17:44:18.3926947Z    25 tests",
+        "2026-10-12T17:44:18.3930672Z sphinx_html exit= 0"
+      ]
+    },
+    {
+      "id": 114934936520,
+      "name": "Python 3.14 · тест ба баримт",
+      "conclusion": "success",
+      "url": "https://github.com/Tuguldur0222/foodflow-documentation/actions/runs/38286161079/job/114934936520",
+      "evidence": [
+        "2026-10-12T17:44:21.2952510Z unit_tests exit= 0",
+        "2026-10-12T17:44:21.2959747Z Ran 49 tests in 1.852s",
+        "2026-10-12T17:44:21.2966334Z 25 tests in 7 items.",
+        "2026-10-12T17:44:21.2966650Z 25 passed.",
+        "2026-10-12T17:44:21.2972102Z   25 tests in default",
+        "2026-10-12T17:44:21.2972321Z 25 tests in 1 item.",
+        "2026-10-12T17:44:21.2972542Z 25 passed.",
+        "2026-10-12T17:44:21.2973366Z    25 tests",
+        "2026-10-12T17:44:21.2975614Z sphinx_html exit= 0"
+      ]
+    },
+    {
+      "id": 114934936527,
+      "name": "OpenAPI гэрээ",
+      "conclusion": "success",
+      "url": "https://github.com/Tuguldur0222/foodflow-documentation/actions/runs/38286161079/job/114934936527",
+      "evidence": [
+        "2026-10-12T17:44:07.6258411Z \u001b[39m\u001b[33mYou have 1 warning."
+      ]
+    }
+  ],
+  "previous_run": {
+    "id": 38285825434,
+    "url": "https://github.com/Tuguldur0222/foodflow-documentation/actions/runs/38285825434",
+    "conclusion": "failure",
+    "reason": "Sphinx 9.1.0 requires Python >=3.12; fixed by Python-version-specific pins."
+  },
+  "notes": [
+    "49 unit tests and 25 doctest examples passed in each Python job.",
+    "The same 25 examples also passed in the Sphinx doctest builder.",
+    "OpenAPI lint succeeded with one info-license warning; no license was invented.",
+    "GitHub Pages deployment and GitLab CI/Pages were not run."
+  ]
+}

@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 .venv/
+.vscode/
 .codex-tools/
 public/
 .pytest_cache/
@@ -15,3 +16,10 @@ source_notes/
 /PHTBB5.yaml
 /report_content.json
 /Week_06_FoodFlow_Improved.md
+# Earlier W06-only generators remain local; the unified exporter replaces them.
+/tools/build_report.py
+/tools/build_word.py
+/tools/preview_report.py
+/docs/source/conf.py
+/docs/source/index.rst
+/docs/source/verification.rst
