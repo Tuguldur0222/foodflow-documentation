@@ -17,14 +17,14 @@ jobs:
       matrix:
         python: ['3.11', '3.14']
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: ${{ matrix.python }}
           cache: pip
       - run: python -m pip install -r requirements-docs.txt
       - run: python tools/verify.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: evidence-python-${{ matrix.python }}
@@ -36,8 +36,8 @@ jobs:
     name: OpenAPI гэрээ
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: '24'
       - run: npx --yes @redocly/cli@2.62.1 lint docs/api/openapi.yaml
