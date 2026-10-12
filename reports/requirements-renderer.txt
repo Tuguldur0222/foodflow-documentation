@@ -1,0 +1,3 @@
+# Optional: regenerate SVG PNGs and inspect PDF pages without a GUI.
+-r requirements.txt
+PySide6==6.11.0

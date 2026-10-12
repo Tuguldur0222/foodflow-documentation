@@ -1,0 +1,313 @@
+{
+  "manifest_exports_checked": 9,
+  "manifest_hash_errors": [
+    "Source changed: docs/architecture/adr/0001-web-app-stack.md",
+    "Source changed: docs/architecture/adr/0002-persistence-and-idempotency.md",
+    "Source changed: docs/architecture/adr/0003-versioned-api-contract.md",
+    "Source changed: docs/architecture/adr/0004-container-responsibilities.md",
+    "Source changed: docs/architecture/adr/index.md",
+    "Source changed: docs/architecture/index.md",
+    "Source changed: docs/architecture/ue-4-rework.md",
+    "Source changed: docs/requirements/mockups/index.md",
+    "Source changed: docs/requirements/scope.md",
+    "Source changed: docs/requirements/srs.md",
+    "Source changed: docs/requirements/traceability.md",
+    "Source changed: docs/semesters/week-03.md",
+    "Source changed: docs/semesters/week-04.md"
+  ],
+  "pdf_pages": 100,
+  "keyword_pages": {
+    "Архитектурын диаграм": [
+      67,
+      70,
+      83,
+      85
+    ],
+    "C4": [
+      2,
+      25,
+      26,
+      27,
+      36,
+      45,
+      65,
+      66,
+      67,
+      69,
+      73,
+      82,
+      86,
+      98
+    ],
+    "mock UI": [
+      2,
+      20,
+      23,
+      58
+    ],
+    "wireframe": [
+      58
+    ],
+    "ACCEPTANCE": [
+      2,
+      14,
+      20,
+      23,
+      36,
+      37,
+      45,
+      46,
+      47,
+      48,
+      49,
+      52,
+      56,
+      57,
+      58,
+      64,
+      73,
+      98,
+      100
+    ],
+    "Last-Reviewed": [
+      16,
+      17,
+      53,
+      54
+    ],
+    "Төлөвийн хүснэгт": [],
+    "Traceability": [
+      10,
+      15,
+      16,
+      18,
+      19,
+      20,
+      25,
+      27,
+      36,
+      98,
+      100
+    ],
+    "мөрдөх хүснэгт": [
+      2,
+      10,
+      12,
+      18,
+      41,
+      42,
+      45,
+      52,
+      72
+    ]
+  },
+  "landscape_pages": [
+    17,
+    53,
+    54,
+    67,
+    70,
+    83,
+    85,
+    93
+  ],
+  "low_text_pages": [],
+  "pdf_text_outside_page": [],
+  "docx_drawings": [
+    {
+      "drawing": 1,
+      "doc_pr_id": "1",
+      "name": "image1.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "1300581"
+      },
+      "embed_id": "rIdImage1",
+      "media": "media/image1.png",
+      "errors": []
+    },
+    {
+      "drawing": 2,
+      "doc_pr_id": "2",
+      "name": "image2.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage2",
+      "media": "media/image2.png",
+      "errors": []
+    },
+    {
+      "drawing": 3,
+      "doc_pr_id": "3",
+      "name": "image3.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage3",
+      "media": "media/image3.png",
+      "errors": []
+    },
+    {
+      "drawing": 4,
+      "doc_pr_id": "4",
+      "name": "image4.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage4",
+      "media": "media/image4.png",
+      "errors": []
+    },
+    {
+      "drawing": 5,
+      "doc_pr_id": "5",
+      "name": "image5.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage5",
+      "media": "media/image5.png",
+      "errors": []
+    },
+    {
+      "drawing": 6,
+      "doc_pr_id": "6",
+      "name": "image6.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage6",
+      "media": "media/image6.png",
+      "errors": []
+    },
+    {
+      "drawing": 7,
+      "doc_pr_id": "7",
+      "name": "image7.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage7",
+      "media": "media/image7.png",
+      "errors": []
+    },
+    {
+      "drawing": 8,
+      "doc_pr_id": "8",
+      "name": "image8.png",
+      "extent": {
+        "cx": "6217920",
+        "cy": "4663440"
+      },
+      "embed_id": "rIdImage8",
+      "media": "media/image8.png",
+      "errors": []
+    },
+    {
+      "drawing": 9,
+      "doc_pr_id": "9",
+      "name": "image9.png",
+      "extent": {
+        "cx": "9326880",
+        "cy": "5526176"
+      },
+      "embed_id": "rIdImage9",
+      "media": "media/image9.png",
+      "errors": []
+    },
+    {
+      "drawing": 10,
+      "doc_pr_id": "10",
+      "name": "image10.png",
+      "extent": {
+        "cx": "8924544",
+        "cy": "5577840"
+      },
+      "embed_id": "rIdImage10",
+      "media": "media/image10.png",
+      "errors": []
+    },
+    {
+      "drawing": 11,
+      "doc_pr_id": "11",
+      "name": "image11.png",
+      "extent": {
+        "cx": "9326880",
+        "cy": "4418609"
+      },
+      "embed_id": "rIdImage11",
+      "media": "media/image11.png",
+      "errors": []
+    },
+    {
+      "drawing": 12,
+      "doc_pr_id": "12",
+      "name": "image12.png",
+      "extent": {
+        "cx": "8924544",
+        "cy": "5577840"
+      },
+      "embed_id": "rIdImage12",
+      "media": "media/image12.png",
+      "errors": []
+    }
+  ],
+  "docx_drawing_sections": [
+    {
+      "embed_id": "rIdImage1",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage2",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage3",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage4",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage5",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage6",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage7",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage8",
+      "orientation": "portrait"
+    },
+    {
+      "embed_id": "rIdImage9",
+      "orientation": "landscape"
+    },
+    {
+      "embed_id": "rIdImage10",
+      "orientation": "landscape"
+    },
+    {
+      "embed_id": "rIdImage11",
+      "orientation": "landscape"
+    },
+    {
+      "embed_id": "rIdImage12",
+      "orientation": "landscape"
+    }
+  ],
+  "docx_drawing_error_count": 0
+}

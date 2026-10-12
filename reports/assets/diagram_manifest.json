@@ -1,0 +1,136 @@
+{
+  "renderer": "PySide6 6.11.0 QtSvg (offscreen)",
+  "background": "white",
+  "registered_fonts": [
+    "arial.ttf",
+    "arialbd.ttf",
+    "ariali.ttf",
+    "arialbi.ttf",
+    "segoeui.ttf",
+    "segoeuib.ttf"
+  ],
+  "rerun": "python reports/assets/render_diagrams.py",
+  "images": [
+    {
+      "source": "docs/architecture/diagrams/container.svg",
+      "source_sha256": "4b6e3a4e6c999b2432ff28477512050a48fee3bf3510f42a02d6f48320e34a05",
+      "image": "reports/assets/architecture--diagrams--container.png",
+      "image_sha256": "1cf86bccdf2acdfec1213e96e51629427fd71b4ea6c7abd9c7a6ba2dd2f13f80",
+      "width": 2400,
+      "height": 1500,
+      "source_width": 1920,
+      "source_height": 1200
+    },
+    {
+      "source": "docs/architecture/diagrams/context.svg",
+      "source_sha256": "b42a927ff8434a072a9aa232fcd5dcde4ad5b22d71570a1c1b1d55fd45738d5f",
+      "image": "reports/assets/architecture--diagrams--context.png",
+      "image_sha256": "ff901c37bd74d3507335c786ee739dd329cdd71afdcd35d53724c1e8408e4528",
+      "width": 2400,
+      "height": 1422,
+      "source_width": 1620,
+      "source_height": 960
+    },
+    {
+      "source": "docs/architecture/diagrams/ue4-after.svg",
+      "source_sha256": "fb510f6c43451a3faf118ddd337c6ff5c0a4865135a6256a8332f1797858fdef",
+      "image": "reports/assets/architecture--diagrams--ue4-after.png",
+      "image_sha256": "0ad76829ab7e7fe9ec97e0b9a568191ff03581f04e9e7f6af99ac9635fedc89f",
+      "width": 2400,
+      "height": 1500,
+      "source_width": 1920,
+      "source_height": 1200
+    },
+    {
+      "source": "docs/architecture/diagrams/ue4-before.svg",
+      "source_sha256": "90f183bd30a651b431a087db8d695a90adad62aedb6a8aac27ee0f0001555dfa",
+      "image": "reports/assets/architecture--diagrams--ue4-before.png",
+      "image_sha256": "c8f4a46f47eea319a82f895983d22ae31f3d9d0f73eddbf0b964710460a3d846",
+      "width": 2400,
+      "height": 1137,
+      "source_width": 1520,
+      "source_height": 720
+    },
+    {
+      "source": "docs/assets/foodflow-banner.svg",
+      "source_sha256": "2dbe9a8759c2739383d5331b4a6c34c9d17a1cff0aadca4eda32b909d1499a35",
+      "image": "reports/assets/assets--foodflow-banner.png",
+      "image_sha256": "9951b22c2f7627ced2759f52ddc28432cc9873cac58ba9458fac1e23108574e8",
+      "width": 2400,
+      "height": 502,
+      "source_width": 1100,
+      "source_height": 230
+    },
+    {
+      "source": "docs/requirements/mockups/address.svg",
+      "source_sha256": "b520ab08dd4f1ccf5adb630023010e8b2f576b1311bccc0cdd69717cc7509d3f",
+      "image": "reports/assets/requirements--mockups--address.png",
+      "image_sha256": "7ddf04ead1de66a3291365c068a3dc3fe7c830c218c466158e3865bdf745048a",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    },
+    {
+      "source": "docs/requirements/mockups/cart.svg",
+      "source_sha256": "d30e2032bfe12ffeaf96058a45de497156f35745c6feaaee16a17dd47bf321fa",
+      "image": "reports/assets/requirements--mockups--cart.png",
+      "image_sha256": "f8a8a9b51a3c054ae7a27dcc428dc263b40cab41dfc6047952c663c84d3f0fcd",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    },
+    {
+      "source": "docs/requirements/mockups/history.svg",
+      "source_sha256": "a5121b9e6d4ef3e8ee4bb5d3f0a496331e87db4e2d6279a257011a6637218431",
+      "image": "reports/assets/requirements--mockups--history.png",
+      "image_sha256": "ced95ca4ec036f802e3098162a037b67bb3c538da6704df0654cf81bb7e8a4a6",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    },
+    {
+      "source": "docs/requirements/mockups/menu.svg",
+      "source_sha256": "153ac05726443267a77986f0c9238efae056449b741e83bbd6dfc5c8dca5be36",
+      "image": "reports/assets/requirements--mockups--menu.png",
+      "image_sha256": "7534651b0e092f7b3f92fc4e40facc10d2f0193982749bbcdbca178a8a653bb9",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    },
+    {
+      "source": "docs/requirements/mockups/payment.svg",
+      "source_sha256": "b0d94a08a097ccf35559d325e7989f7ced2b4d4b63655a5e9a96a9c13296c83b",
+      "image": "reports/assets/requirements--mockups--payment.png",
+      "image_sha256": "ae180ed1371bccc1ff68031220b74334ad3e9fdae27203aa73e32d94a3b28ef1",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    },
+    {
+      "source": "docs/requirements/mockups/status.svg",
+      "source_sha256": "64a8cb9638d65d74a4821ef9095d6bd8368b1f79449d63ec74ff410a61e805b8",
+      "image": "reports/assets/requirements--mockups--status.png",
+      "image_sha256": "1ba7872b61dff5844f93d365fef572152082dd1d1d4aeb27dd21e0db54c65916",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    },
+    {
+      "source": "docs/requirements/mockups/summary.svg",
+      "source_sha256": "7f672269847931f4dbcc9645419780666066d622f68b2d14cd6286f9819e369c",
+      "image": "reports/assets/requirements--mockups--summary.png",
+      "image_sha256": "d86a9099a70fab1a34ede81beb2ebb2851117e9cd94269210b912da19bf4805e",
+      "width": 2280,
+      "height": 1710,
+      "source_width": 760,
+      "source_height": 570
+    }
+  ],
+  "errors": []
+}

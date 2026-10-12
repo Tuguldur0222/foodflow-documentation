@@ -1,0 +1,268 @@
+{
+  "generated_at": "2026-10-13T01:32:03+08:00",
+  "client_date": "2026-10-13",
+  "canonical_source": "repository Markdown",
+  "source_repository": "https://github.com/Tuguldur0222/foodflow-documentation",
+  "generator": {
+    "path": "tools/export_project.py",
+    "sha256": "76ee47d057f6a43d824aab3b2a32cb26dbdfa848e1d38592e0798d5c4d43d0a2"
+  },
+  "diagram_manifest_sha256": "a5ff4f06a3270acf9186e9c8205e9fc8c2a67d2919433f6ce075b23c4d3cafb5",
+  "dependencies": {
+    "reportlab": "5.0.1",
+    "markdown-it-py": "4.2.0",
+    "pypdf": "6.20.0",
+    "Pillow": "12.3.0"
+  },
+  "renderer": {
+    "pdf": "ReportLab 5.0.1",
+    "word": "editable OpenXML; Word pagination depends on installed fonts/layout",
+    "fonts": "embedded Arial and Consolas in PDF; Arial/Consolas requested in DOCX",
+    "diagrams": "offscreen QtSvg PNG; original SVG/Mermaid retained"
+  },
+  "exports": [
+    {
+      "name": "Week_01_FoodFlow",
+      "pdf": "reports/Week_01_FoodFlow.pdf",
+      "docx": "reports/Week_01_FoodFlow.docx",
+      "pdf_pages": 6,
+      "sources": [
+        "docs/semesters/week-01.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-01.md": "32286b8b414f1546c8e2f92b9ba2cdb42e522772eecfa1dbb1862e14eb3b10b6"
+      },
+      "pdf_sha256": "92788820a6f56bfadcc698a474ef7ef57ca602136fd14cd6e6d31dbc196c1dc3",
+      "docx_sha256": "318583c04822fa508a4e74fc5f191c97e84322956a6d0186046934b42837be1b",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 160,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "Week_02_FoodFlow",
+      "pdf": "reports/Week_02_FoodFlow.pdf",
+      "docx": "reports/Week_02_FoodFlow.docx",
+      "pdf_pages": 10,
+      "sources": [
+        "docs/semesters/week-02.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-02.md": "a1f0540990133c2d724c7eedee21890d951af9e073ed9c8f94bd9fbf55132b9c"
+      },
+      "pdf_sha256": "eee18604e95a443a2b3c668168e570ce0ee061ca6749abf080aa1df5ee721876",
+      "docx_sha256": "75ea9d91f4a70aba58943b9af503ed9d30a602a83e2b04434f7adf98df048037",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 298,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "Week_03_FoodFlow",
+      "pdf": "reports/Week_03_FoodFlow.pdf",
+      "docx": "reports/Week_03_FoodFlow.docx",
+      "pdf_pages": 5,
+      "sources": [
+        "docs/semesters/week-03.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-03.md": "5505794d707065323cdc36e1a77a380fbce511121428674421ff3a6840d84b3e"
+      },
+      "pdf_sha256": "e0b79bd35e87ae6817a6a48eaa535969d02c52a6c6c5cf90d7c7b29ebd467655",
+      "docx_sha256": "bac148d097e05468dc19d18505b9c19e8edfc5ea50db302cd8fd9932f6218093",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 139,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "Week_04_FoodFlow",
+      "pdf": "reports/Week_04_FoodFlow.pdf",
+      "docx": "reports/Week_04_FoodFlow.docx",
+      "pdf_pages": 3,
+      "sources": [
+        "docs/semesters/week-04.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-04.md": "ce384df2e1c92789ecd4356ee37f94c91b45ea5ad56f2346ba33d4fc9a02ee23"
+      },
+      "pdf_sha256": "1b02adb7308e7db3c86e6f19d05c75473b55043ac242249423b1212b791faabd",
+      "docx_sha256": "6127ee1cfa037594d12fd6580ce4caecc2f07bea13a91481f7d31edfa49af2fe",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 81,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "Week_05_FoodFlow",
+      "pdf": "reports/Week_05_FoodFlow.pdf",
+      "docx": "reports/Week_05_FoodFlow.docx",
+      "pdf_pages": 5,
+      "sources": [
+        "docs/semesters/week-05.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-05.md": "302156245c4e0dce95f6ff4812d53d8cc1314c9e862c81386a76a8d6f1eb32fa"
+      },
+      "pdf_sha256": "3a922ff53a9ca5c6f6800f5f916ed68f0ac73502029ecad1792dbf3694ddf989",
+      "docx_sha256": "6f31bd2572bdd6061dbcc5a6c71cca7c95fb5bf2d5d7816c6b2eab41716b57b1",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 123,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "Week_06_FoodFlow",
+      "pdf": "reports/Week_06_FoodFlow.pdf",
+      "docx": "reports/Week_06_FoodFlow.docx",
+      "pdf_pages": 3,
+      "sources": [
+        "docs/semesters/week-06.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-06.md": "e3bafaed6392a4f10d05891d4123877a94fbfd23ce2c0438d9252bb6349a2c9f"
+      },
+      "pdf_sha256": "01fc6585e34243ecdb054915f8a30fc1d0bb98a16efab8bdc6e8af8a2c521f28",
+      "docx_sha256": "177442ebfc5727fcd684b6884ed81956bfbb61c547dcc01d6e36081101ef44c9",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 73,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "Scope_Charter",
+      "pdf": "reports/Scope_Charter.pdf",
+      "docx": "reports/Scope_Charter.docx",
+      "pdf_pages": 1,
+      "sources": [
+        "docs/requirements/scope.md"
+      ],
+      "source_sha256": {
+        "docs/requirements/scope.md": "8510381c5ba0e3bc99b03055d62330bf61d86a2c6b0ff77c1a0b79f5b890bcaa"
+      },
+      "pdf_sha256": "e42756e3722e013e6e430bc008df5671414439a70122920ec1fa7d126bf4f450",
+      "docx_sha256": "61681954b28b4786e3f1839e6719ec34fe9c79d8bda2bf2d0ed77488e3d9792d",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 16,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "UE_01_Corgly",
+      "pdf": "reports/UE_01_Corgly.pdf",
+      "docx": "reports/UE_01_Corgly.docx",
+      "pdf_pages": 2,
+      "sources": [
+        "docs/audience/corg-ly-exercise.md"
+      ],
+      "source_sha256": {
+        "docs/audience/corg-ly-exercise.md": "e48c498540f782676528dc65d197a67b5b4dc9eeac89b803546a91104612d016"
+      },
+      "pdf_sha256": "5968132f0dd361ce09a09187db4b01015472a0aa7ed82087e68199d39a76bd3c",
+      "docx_sha256": "66654505616633ed5a5d3f230800dac0b11768f96d15ffd9b0b65f715cf6cabd",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 44,
+        "pdf_text_segments_needing_review": []
+      }
+    },
+    {
+      "name": "FoodFlow_Documentation",
+      "pdf": "reports/FoodFlow_Documentation.pdf",
+      "docx": "reports/FoodFlow_Documentation.docx",
+      "pdf_pages": 100,
+      "sources": [
+        "docs/semesters/week-01.md",
+        "docs/semesters/week-02.md",
+        "docs/semesters/week-03.md",
+        "docs/semesters/week-04.md",
+        "docs/semesters/week-05.md",
+        "docs/semesters/week-06.md",
+        "docs/glossary.md",
+        "docs/audience/personas.md",
+        "docs/requirements/scope.md",
+        "docs/audience/corg-ly-exercise.md",
+        "docs/requirements/srs.md",
+        "docs/requirements/traceability.md",
+        "docs/requirements/mockups/index.md",
+        "docs/architecture/index.md",
+        "docs/architecture/adr/index.md",
+        "docs/architecture/adr/0001-web-app-stack.md",
+        "docs/architecture/adr/0002-persistence-and-idempotency.md",
+        "docs/architecture/adr/0003-versioned-api-contract.md",
+        "docs/architecture/adr/0004-container-responsibilities.md",
+        "docs/architecture/ue-4-rework.md",
+        "docs/api/README.md",
+        "docs/api/sample-audit.md",
+        "docs/api/renderer-decision.md",
+        "review/bhatti_audit_table.md",
+        "review/technical_debt.md",
+        "docs/project/status.md",
+        "docs/project/provenance.md",
+        "docs/project/roadmap.md"
+      ],
+      "source_sha256": {
+        "docs/semesters/week-01.md": "32286b8b414f1546c8e2f92b9ba2cdb42e522772eecfa1dbb1862e14eb3b10b6",
+        "docs/semesters/week-02.md": "a1f0540990133c2d724c7eedee21890d951af9e073ed9c8f94bd9fbf55132b9c",
+        "docs/semesters/week-03.md": "5505794d707065323cdc36e1a77a380fbce511121428674421ff3a6840d84b3e",
+        "docs/semesters/week-04.md": "ce384df2e1c92789ecd4356ee37f94c91b45ea5ad56f2346ba33d4fc9a02ee23",
+        "docs/semesters/week-05.md": "302156245c4e0dce95f6ff4812d53d8cc1314c9e862c81386a76a8d6f1eb32fa",
+        "docs/semesters/week-06.md": "e3bafaed6392a4f10d05891d4123877a94fbfd23ce2c0438d9252bb6349a2c9f",
+        "docs/glossary.md": "756fb963ea7f88487bed1f576ccb1b9917fd67c782faf3ce7238cf42a340eef4",
+        "docs/audience/personas.md": "7a752f8a3b128f4eb45ffb73dd1e41c8f59d84c2d04a6f78ace80da0e456b414",
+        "docs/requirements/scope.md": "8510381c5ba0e3bc99b03055d62330bf61d86a2c6b0ff77c1a0b79f5b890bcaa",
+        "docs/audience/corg-ly-exercise.md": "e48c498540f782676528dc65d197a67b5b4dc9eeac89b803546a91104612d016",
+        "docs/requirements/srs.md": "6f70c9f35e0d8577b9ade9a5624c03f261897db6944b571e6b6ba40ddc194d88",
+        "docs/requirements/traceability.md": "7cd56c512f4e3c88e329b73202106d17bf14a43b9f9b123b7c01b699242f5452",
+        "docs/requirements/mockups/index.md": "ae03ebbadcef1953235a40f5245811f2a5de121c4022ec1148954ba69b8599aa",
+        "docs/architecture/index.md": "b17c00013781a8b0512813101d693166b9de98e3f38a06a82e03da0d89d2c307",
+        "docs/architecture/adr/index.md": "bff476c7ce3d61a3b1a12bb34a76e003b6d3a1e07a65318b58316737291f9d02",
+        "docs/architecture/adr/0001-web-app-stack.md": "cfe814bec6664b62847d97c1f32b82c606a2a4af6df6247a66806ea07f7465d5",
+        "docs/architecture/adr/0002-persistence-and-idempotency.md": "e4dc2dd6a700475b2f895be7cb7b8d2ad7719b0909297a5cde7138608da78dec",
+        "docs/architecture/adr/0003-versioned-api-contract.md": "f89a4c8b4e598ae9af3d5c1256ad189e6c946dfbd17be15372b82b468a272c57",
+        "docs/architecture/adr/0004-container-responsibilities.md": "b8e53299508d5118ec860f42f55170751354fa66c7196a8550c289119ace577c",
+        "docs/architecture/ue-4-rework.md": "5e8ca3bbc7427dfccc9bdbd95407bc6a7ea634250336a0e594224a84bb5ea1ca",
+        "docs/api/README.md": "abe91dcc467034034165f28551973fc30f6599ee243f3e70d56a737e8a97769b",
+        "docs/api/sample-audit.md": "d1ce50ebfca494a61f695bf4e6a42d49896eda94c13cb6d28fb027c22b7df78a",
+        "docs/api/renderer-decision.md": "9b0d009a6a843edd5de960afbfb9502ab8f2b37997cd3ad101d41c85dc96f253",
+        "review/bhatti_audit_table.md": "bfde9a528221164f43960354740c9635f967f9a7900c0176f86851b2f41b48d2",
+        "review/technical_debt.md": "0a5c2af34cc747b5f3d0280a2e26f011f946d171f30f1da3fe421a541647b74c",
+        "docs/project/status.md": "65cd389ed174f09a901a69ea503769acc3259b9e10ce272050f56f8403bd6fc4",
+        "docs/project/provenance.md": "8dd3d0ebdf88a27f2d0445c6077acbe0f2da2ea3a6793709eb6680d5e1d25443",
+        "docs/project/roadmap.md": "4db09804a2a57de1b1abd88d68d6a8ab07816b5a03d7a4306e7fe7c70af18056"
+      },
+      "pdf_sha256": "db50501fcc570aaf36124a91eff29607fc7450c75360dca0c48e7d0bc95db37c",
+      "docx_sha256": "e6f9e9dcda29e715bbb927938339ec35a3462bf7352c0bf5f63ef3eba4e14c63",
+      "validation": {
+        "docx_zip_xml": "passed",
+        "docx_complete_block_text": "passed",
+        "unicode_replacement_characters": 0,
+        "pdf_text_segments_checked": 2136,
+        "pdf_text_segments_needing_review": []
+      }
+    }
+  ]
+}
