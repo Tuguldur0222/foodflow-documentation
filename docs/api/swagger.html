@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="FoodFlow Week 05 сургалтын API-ийн Swagger UI харагдац">
+  <title>FoodFlow · API Sandbox</title>
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css">
+  <style>
+    body { margin: 0; color: #172c3c; font: 16px/1.6 system-ui, sans-serif; }
+    .intro { padding: 24px max(24px, calc((100% - 1440px) / 2)); background: #102c3c; color: #edf7f4; }
+    .intro h1 { margin: 0 0 8px; font-size: 28px; }
+    .intro p { margin: 8px 0; max-width: 980px; }
+    .intro a { color: #82e2bd; margin-right: 20px; }
+    code { font-size: .9em; }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <h1>FoodFlow / API Sandbox</h1>
+    <p>Week 05 · OpenAPI 3.0.3 · Сургалтын mock API</p>
+    <p><code>python examples/mock_api.py</code> командаар локал серверээ асаана.
+      Authorize хэсэгт <code>demo-customer-token</code> оруулаад таван үйлдлийг дарааллаар туршина.
+      Token нь ил тод сургалтын утга; төлбөр болон JWT баталгаажуулалт холбогдоогүй.</p>
+    <nav aria-label="API харагдац">
+      <a href="redoc.html">Redoc унших харагдац</a>
+      <a href="openapi.yaml">OpenAPI YAML</a>
+    </nav>
+  </header>
+  <main id="swagger-ui"></main>
+  <noscript>API харагдацыг үзэхийн тулд JavaScript идэвхжүүлнэ. YAML файлыг дээрх холбоосоор татаж болно.</noscript>
+  <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.SwaggerUIBundle) {
+        document.getElementById('swagger-ui').textContent = 'CDN санг татаж чадсангүй. Интернет холболтоо шалгана уу.';
+        return;
+      }
+      window.ui = SwaggerUIBundle({
+        url: 'openapi.yaml',
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        displayRequestDuration: true,
+        persistAuthorization: false,
+        validatorUrl: null,
+        filter: true,
+        tryItOutEnabled: false
+      });
+    });
+  </script>
+</body>
+</html>

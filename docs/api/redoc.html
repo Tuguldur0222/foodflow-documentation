@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="FoodFlow Week 05 сургалтын API-ийн Redoc лавлах">
+  <title>FoodFlow · API Reference</title>
+  <style>
+    body { margin: 0; color: #172c3c; font: 16px/1.6 system-ui, sans-serif; }
+    .intro { padding: 24px 32px; background: #102c3c; color: #edf7f4; }
+    .intro h1 { margin: 0 0 8px; font-size: 28px; }
+    .intro p { margin: 8px 0; max-width: 1000px; }
+    .intro a { color: #82e2bd; margin-right: 20px; }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <h1>FoodFlow / API Reference</h1>
+    <p>Week 05 · Нэг OpenAPI гэрээ, уншихад зориулсан харагдац.</p>
+    <p>Эндхүү API нь санах ойд ажилладаг локал сургалтын mock юм.
+      Бодит төлбөр, хүргэлтийн үйлчилгээтэй холбогдоогүй.
+      Хоёр харагдац CDN-ээс JavaScript татах тул интернет холболт хэрэгтэй.</p>
+    <nav aria-label="API харагдац">
+      <a href="swagger.html">Swagger UI sandbox</a>
+      <a href="openapi.yaml">OpenAPI YAML</a>
+    </nav>
+  </header>
+  <main id="redoc-container"></main>
+  <noscript>API лавлахыг үзэхийн тулд JavaScript идэвхжүүлнэ. YAML файлыг дээрх холбоосоор татаж болно.</noscript>
+  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.Redoc) {
+        document.getElementById('redoc-container').textContent = 'CDN санг татаж чадсангүй. Интернет холболтоо шалгана уу.';
+        return;
+      }
+      Redoc.init('openapi.yaml', {
+        hideDownloadButton: false,
+        nativeScrollbars: true,
+        theme: { colors: { primary: { main: '#136f63' } }, typography: { fontFamily: 'system-ui, sans-serif' } }
+      }, document.getElementById('redoc-container'));
+    });
+  </script>
+</body>
+</html>

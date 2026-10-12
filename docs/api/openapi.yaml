@@ -1,0 +1,656 @@
+openapi: 3.0.3
+info:
+  title: FoodFlow API — Week 05 сургалтын гэрээ
+  version: 1.1.0
+  description: >-
+    Week_03_FoodFlow.docx-ийн FR-04, FR-05, FR-08, FR-10, FR-11 шаардлагын таван HTTP үйлдэл.
+    Эх гэрээ нь хэрэглэгчийн өгсөн PHTBB5.yaml. Энэ хувилбарт оролтын хязгаар, өмчлөл,
+    давтан хүсэлтийн бодлогыг тодруулав. Локал mock нь өгөгдлийг санах ойд хадгална.
+    Бодит төлбөр, JWT баталгаажуулалт, өгөгдлийн сан, хүргэлтийн үйлчилгээ холбогдоогүй.
+    Жишээнүүдийг цэвэр төлөвтэй сервер дээр дарааллаар ажиллуулна.
+  contact:
+    name: Ю. Төгөлдөр — FoodFlow сургалтын төсөл
+servers:
+- url: http://127.0.0.1:8765
+  description: Локал сургалтын mock сервер
+tags:
+- name: FoodFlow
+  description: Customer захиалгын үндсэн урсгал
+security:
+- BearerAuth: []
+paths:
+  /api/v1/carts/{cart_id}/items:
+    post:
+      tags:
+      - FoodFlow
+      summary: Сагсанд хоол нэмэх
+      description: >-
+        FR-04. Локал fixture food_id=7 нь 18,000 MNT нэгж үнэтэй. Quantity 1–10 бүхэл тоо;
+        boolean болон бутархай утгыг зөвшөөрөхгүй. Цэвэр сагсанд нэг мөр нэмнэ.
+        Ижил хоолыг давхар POST хийхэд 409; тоог PATCH-аар өөрчилнө. Өөрийн сагсанд л хандана.
+      operationId: addCartItem
+      parameters:
+      - $ref: '#/components/parameters/CartId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCartItem'
+            example:
+              food_id: 7
+              quantity: 1
+      responses:
+        '200':
+          description: Өөрчлөлт хадгалагдав.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+              example:
+                cart_id: cart_101
+                item_id: ci_1
+                food_id: 7
+                quantity: 1
+                subtotal_mnt: 18000
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - BearerAuth: []
+      x-srs-requirements:
+      - FR-04
+  /api/v1/carts/{cart_id}/items/{item_id}:
+    patch:
+      tags:
+      - FoodFlow
+      summary: Хоолны тоо өөрчлөх
+      description: >-
+        FR-05. Quantity 1–10 бүхэл тоо. subtotal_mnt = quantity × 18000.
+        POST item үүсгэсний дараа ci_1 мөрийг өөрчилнө.
+        Submit хийсэн сагсанд 409; бусдын сагсанд 404.
+      operationId: changeCartQuantity
+      parameters:
+      - $ref: '#/components/parameters/CartId'
+      - $ref: '#/components/parameters/ItemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeQuantity'
+            example:
+              quantity: 2
+      responses:
+        '200':
+          description: Өөрчлөлт хадгалагдав.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+              example:
+                cart_id: cart_101
+                item_id: ci_1
+                food_id: 7
+                quantity: 2
+                subtotal_mnt: 36000
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - BearerAuth: []
+      x-srs-requirements:
+      - FR-05
+  /api/v1/orders/{draft_id}/address:
+    put:
+      tags:
+      - FoodFlow
+      summary: Хүргэлтийн хаяг хадгалах
+      description: >-
+        FR-08. District, khoroo, street, phone талбарыг шалгаж draft-д хадгална.
+        Khoroo 1–100; phone яг 8 ASCII цифр. Газарзүйн бодит хаяг шалгахгүй.
+        POST /orders эцсийн address-аа body-д дахин илгээнэ.
+      operationId: saveDeliveryAddress
+      parameters:
+      - $ref: '#/components/parameters/DraftId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+            example:
+              district: Сүхбаатар
+              khoroo: 8
+              street: Бага тойруу 12-5
+              phone: '99112233'
+      responses:
+        '200':
+          description: Өөрчлөлт хадгалагдав.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedAddress'
+              example:
+                order_id: draft_1024
+                address:
+                  district: Сүхбаатар
+                  khoroo: 8
+                  street: Бага тойруу 12-5
+                  phone: '99112233'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - BearerAuth: []
+      x-srs-requirements:
+      - FR-08
+  /api/v1/orders/{draft_id}/payment-method:
+    put:
+      tags:
+      - FoodFlow
+      summary: Төлбөрийн арга хадгалах
+      description: >-
+        FR-10. QPay, BankCard, CashOnDelivery гэсэн яг нэг нэршлийг draft-д хадгална.
+        Төлбөр төлөгдсөн гэсэн баталгаа биш.
+        POST /orders эцсийн payment_method-оо body-д дахин илгээнэ.
+      operationId: savePaymentMethod
+      parameters:
+      - $ref: '#/components/parameters/DraftId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentChoice'
+            example:
+              payment_method: QPay
+      responses:
+        '200':
+          description: Өөрчлөлт хадгалагдав.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedPayment'
+              example:
+                order_id: draft_1024
+                payment_method: QPay
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - BearerAuth: []
+      x-srs-requirements:
+      - FR-10
+  /api/v1/orders:
+    post:
+      tags:
+      - FoodFlow
+      summary: Нэг захиалга үүсгэх
+      description: >-
+        FR-11, NFR-02, NFR-03. Өөрийн хоосон биш сагсыг нэг удаа submit хийнэ.
+        Шинэ key-д 201; 24 цагийн дотор ижил хэрэглэгч, key, JSON агуулгатай бол
+        200 ба өмнөх хариу; агуулга өөр бол 409. Үйлдэл локал серверийн lock дотор атомик.
+        total_mnt = subtotal_mnt + 3000 хүргэлтийн хураамж.
+        Энэ хүсэлтийн address ба payment_method эцсийн утга болно.
+        Дахин асаахад өгөгдөл, idempotency кэш арилна.
+      operationId: placeOrder
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceOrder'
+            example:
+              cart_id: cart_101
+              address:
+                district: Сүхбаатар
+                khoroo: 8
+                street: Бага тойруу 12-5
+                phone: '99112233'
+              payment_method: QPay
+      responses:
+        '201':
+          description: Захиалга шинээр үүсэв.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResult'
+              example:
+                order_id: FF-1024
+                status: Pending
+                total_mnt: 39000
+        '200':
+          description: Өмнөх захиалгын ижил хариу.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResult'
+              example:
+                order_id: FF-1024
+                status: Pending
+                total_mnt: 39000
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - BearerAuth: []
+      x-srs-requirements:
+      - FR-11
+      - NFR-02
+      - NFR-03
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Локал mock-д зориулсан ил тод demo token. demo-customer-token нь customer_1;
+        demo-other-token нь customer_2. Token нь JWT биш. Бодит хэрэглэгчийн нууц түлхүүр бүү оруул.
+  parameters:
+    CartId:
+      name: cart_id
+      in: path
+      required: true
+      description: Сагсны ID
+      schema:
+        type: string
+        minLength: 1
+      example: cart_101
+    ItemId:
+      name: item_id
+      in: path
+      required: true
+      description: Сагсны мөрийн ID
+      schema:
+        type: string
+        minLength: 1
+      example: ci_1
+    DraftId:
+      name: draft_id
+      in: path
+      required: true
+      description: Захиалгын нооргийн ID
+      schema:
+        type: string
+        minLength: 1
+      example: draft_1024
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: >-
+        Хэрэглэгч бүрд тусдаа, 24 цагийн хугацаатай түлхүүр.
+        Ижил key ба JSON агуулгатай бол 200, өмнөх order_id.
+        Ижил key, өөр агуулгатай бол 409. JSON түлхүүрүүдийн дараалал нөлөөлөхгүй.
+        Дахин асаахад кэш арилна. Хугацаа дууссан ч submit хийсэн сагс дахин нээгдэхгүй.
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 128
+        pattern: ^[A-Za-z0-9_.:-]+$
+      example: ff-order-1024
+  schemas:
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          example: invalid_request
+        message:
+          type: string
+          example: Хүсэлтийн утгыг шалгана уу.
+        field:
+          type: string
+          example: quantity
+      example:
+        code: invalid_request
+        message: Хүсэлтийн утгыг шалгана уу.
+      additionalProperties: false
+    Address:
+      type: object
+      required:
+      - district
+      - khoroo
+      - street
+      - phone
+      properties:
+        district:
+          type: string
+          example: Сүхбаатар
+          minLength: 1
+          maxLength: 200
+          pattern: \S
+        khoroo:
+          type: integer
+          example: 8
+          minimum: 1
+          maximum: 100
+        street:
+          type: string
+          example: Бага тойруу 12-5
+          minLength: 1
+          maxLength: 200
+          pattern: \S
+        phone:
+          type: string
+          pattern: ^[0-9]{8}$
+          minLength: 8
+          maxLength: 8
+          example: '99112233'
+      example:
+        district: Сүхбаатар
+        khoroo: 8
+        street: Бага тойруу 12-5
+        phone: '99112233'
+      additionalProperties: false
+    AddCartItem:
+      type: object
+      required:
+      - food_id
+      - quantity
+      properties:
+        food_id:
+          type: integer
+          example: 7
+          minimum: 1
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
+      example:
+        food_id: 7
+        quantity: 1
+      additionalProperties: false
+    CartItem:
+      type: object
+      required:
+      - cart_id
+      - item_id
+      - food_id
+      - quantity
+      - subtotal_mnt
+      properties:
+        cart_id:
+          type: string
+          example: cart_101
+        item_id:
+          type: string
+          example: ci_1
+        food_id:
+          type: integer
+          example: 7
+        quantity:
+          type: integer
+          example: 1
+          minimum: 1
+          maximum: 10
+        subtotal_mnt:
+          type: integer
+          example: 18000
+          minimum: 18000
+          maximum: 180000
+      example:
+        cart_id: cart_101
+        item_id: ci_1
+        food_id: 7
+        quantity: 1
+        subtotal_mnt: 18000
+      additionalProperties: false
+    ChangeQuantity:
+      type: object
+      required:
+      - quantity
+      properties:
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 2
+      example:
+        quantity: 2
+      additionalProperties: false
+    SavedAddress:
+      type: object
+      required:
+      - order_id
+      - address
+      properties:
+        order_id:
+          type: string
+          example: draft_1024
+        address:
+          $ref: '#/components/schemas/Address'
+      example:
+        order_id: draft_1024
+        address:
+          district: Сүхбаатар
+          khoroo: 8
+          street: Бага тойруу 12-5
+          phone: '99112233'
+      additionalProperties: false
+    PaymentChoice:
+      type: object
+      required:
+      - payment_method
+      properties:
+        payment_method:
+          type: string
+          enum:
+          - QPay
+          - BankCard
+          - CashOnDelivery
+          example: QPay
+      example:
+        payment_method: QPay
+      additionalProperties: false
+    SavedPayment:
+      type: object
+      required:
+      - order_id
+      - payment_method
+      properties:
+        order_id:
+          type: string
+          example: draft_1024
+        payment_method:
+          type: string
+          example: QPay
+          enum:
+          - QPay
+          - BankCard
+          - CashOnDelivery
+      example:
+        order_id: draft_1024
+        payment_method: QPay
+      additionalProperties: false
+    PlaceOrder:
+      type: object
+      required:
+      - cart_id
+      - address
+      - payment_method
+      properties:
+        cart_id:
+          type: string
+          example: cart_101
+          minLength: 1
+        address:
+          $ref: '#/components/schemas/Address'
+        payment_method:
+          type: string
+          enum:
+          - QPay
+          - BankCard
+          - CashOnDelivery
+          example: QPay
+      example:
+        cart_id: cart_101
+        address:
+          district: Сүхбаатар
+          khoroo: 8
+          street: Бага тойруу 12-5
+          phone: '99112233'
+        payment_method: QPay
+      additionalProperties: false
+    OrderResult:
+      type: object
+      required:
+      - order_id
+      - status
+      - total_mnt
+      properties:
+        order_id:
+          type: string
+          example: FF-1024
+        status:
+          type: string
+          enum:
+          - Pending
+          - Confirmed
+          - Preparing
+          - Out for delivery
+          - Delivered
+          - Cancelled
+          example: Pending
+        total_mnt:
+          type: integer
+          example: 39000
+          minimum: 21000
+          maximum: 183000
+      example:
+        order_id: FF-1024
+        status: Pending
+        total_mnt: 39000
+      additionalProperties: false
+  responses:
+    InvalidRequest:
+      description: Оролтын төрөл, шаардлагатай талбар, JSON бүтэц эсвэл Idempotency-Key буруу.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: invalid_request
+            message: Хүсэлтийн утгыг шалгана уу.
+    Unauthorized:
+      description: 'Bearer token байхгүй эсвэл танигдахгүй. WWW-Authenticate: Bearer.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: unauthorized
+            message: Нэвтрэх token шаардлагатай.
+      headers:
+        WWW-Authenticate:
+          description: Bearer authentication challenge.
+          schema:
+            type: string
+          example: Bearer
+    NotFound:
+      description: Нөөц олдоогүй эсвэл өөр хэрэглэгчийнх. Өмчлөгчийн мэдээлэл ил гаргахгүй.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: not_found
+            message: Нөөц олдсонгүй.
+    Conflict:
+      description: Сагс submit хийгдсэн, хоосон эсвэл item давхар нэмсэн; эсвэл idempotency key-ийн агуулга зөрсөн.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: conflict
+            message: Одоогийн төлөвтэй зөрчилдөв.
+    PayloadTooLarge:
+      description: Request body 1 MiB-ээс их.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: payload_too_large
+            message: Хүсэлтийн хэмжээ 1 MiB-ээс хэтэрсэн.
+    UnsupportedMediaType:
+      description: Content-Type application/json байх ёстой.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: unsupported_media_type
+            message: Хүсэлтийн Content-Type буруу.
+    InternalError:
+      description: Хүлээгдээгүй серверийн алдаа; дотоод exception-ийн мэдээлэл буцаахгүй.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: internal_error
+            message: Серверийн түр алдаа.
