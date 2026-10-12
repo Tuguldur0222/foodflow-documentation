@@ -1,0 +1,24 @@
+flowchart LR
+    customer["Саруул / Customer<br/>Person: хоол захиалагч"]
+    staff["Restaurant Staff<br/>Person: захиалга боловсруулагч"]
+    courier["Courier<br/>Person: хүргэлтийн ажилтан"]
+    support["Номин / Support<br/>Person: тусламжийн ажилтан"]
+    subgraph boundary["FoodFlow system boundary"]
+        foodflow["FoodFlow<br/>Software System<br/>Хоол захиалга, өөрийн order-ийн төлөв"]
+    end
+    payment["Payment Provider<br/>External Software System<br/>Төлбөр боловсруулна"]
+    notification["Notification Provider<br/>External Software System<br/>Мэдэгдэл хүргэнэ"]
+    customer -->|"Хоол, checkout, өөрийн төлөв: HTTPS"| foodflow
+    staff -->|"Захиалга хүлээн авах, төлөв шинэчлэх: HTTPS"| foodflow
+    courier -->|"Хүргэлтийн явц шинэчлэх: HTTPS"| foodflow
+    support -->|"Эрхийн хүрээнд order lookup: HTTPS"| foodflow
+    foodflow -->|"Төлбөрийн хүсэлт / reference: HTTPS JSON"| payment
+    payment -->|"Баталгаажсан payment result: webhook HTTPS"| foodflow
+    foodflow -->|"Мэдэгдлийн event / destination: HTTPS"| notification
+    notification -->|"Delivery result: HTTPS"| foodflow
+    classDef person fill:#e7edf6,stroke:#4d6485,color:#172b4d;
+    classDef internal fill:#e4f4ee,stroke:#26765c,color:#143c2d;
+    classDef external fill:#f2f2f2,stroke:#777,color:#333;
+    class customer,staff,courier,support person;
+    class foodflow internal;
+    class payment,notification external;

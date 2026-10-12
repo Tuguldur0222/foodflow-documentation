@@ -1,0 +1,10 @@
+flowchart LR
+    customer["Customer<br/>Person"]
+    subgraph boundary["FoodFlow system boundary — flawed exercise"]
+        magic["Magic Container<br/>Технологи тодорхойгүй<br/>UI, API, DB, payment, notification, retry бүгд"]
+    end
+    provider["External providers<br/>System boundary тодорхойгүй"]
+    customer -->|"Ерөнхий хэрэглээ — агуулга бүдэг"| magic
+    magic -->|"Integration — protocol бүдэг"| provider
+    classDef flawed fill:#fff0e6,stroke:#be5b25,color:#6b3012;
+    class magic flawed;

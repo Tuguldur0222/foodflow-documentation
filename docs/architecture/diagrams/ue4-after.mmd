@@ -1,0 +1,26 @@
+flowchart LR
+    customer["Customer<br/>Person"]
+    staff["Restaurant Staff<br/>Person"]
+    courier["Courier<br/>Person"]
+    support["Support / Номин<br/>Person"]
+    subgraph boundary["FoodFlow system boundary — Proposed"]
+        web["Web App<br/>Container: React / TypeScript<br/>Menu, Cart, Checkout, Status UI"]
+        api["API<br/>Container: Python / FastAPI<br/>Auth, price, order, state rules"]
+        worker["Worker<br/>Container: Python<br/>Notification job ба retry"]
+        db[("PostgreSQL<br/>Container: relational datastore<br/>Durable orders, owner, key result, outbox")]
+        redis[("Redis<br/>Container: queue / cache<br/>Job dispatch, key lookup cache")]
+        web -->|"Token, request / response: HTTPS JSON"| api
+        api -->|"Catalog, cart, order, key transaction: SQL"| db
+        api -->|"Key cache lookup, job dispatch: Redis protocol"| redis
+        worker -->|"Job авах / ack: Redis protocol"| redis
+        worker -->|"Outbox / delivery result: SQL"| db
+    end
+    payment["Payment Provider<br/>External Software System"]
+    notification["Notification Provider<br/>External Software System"]
+    customer -->|"Захиалга, өөрийн төлөв: browser UI"| web
+    staff -->|"Order төлөв: эрхтэй UI, proposed"| web
+    courier -->|"Delivery төлөв: эрхтэй UI, proposed"| web
+    support -->|"Lookup: эрхтэй UI, proposed"| web
+    api -->|"Payment request: HTTPS JSON"| payment
+    payment -->|"Signed result: webhook HTTPS"| api
+    worker -->|"Notification / delivery result: HTTPS"| notification
