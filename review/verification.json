@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-13T01:34:19.115259+08:00",
+  "timezone": "Asia/Ulaanbaatar",
+  "python": "3.14.6",
+  "sphinx": "9.1.0",
+  "scope": "FoodFlow seminars 01–06 documentation and teaching examples",
+  "checks": [
+    {
+      "name": "unit_tests",
+      "exit_code": 0,
+      "log": "review/unit_tests_log.txt"
+    },
+    {
+      "name": "python_doctest",
+      "exit_code": 0,
+      "log": "review/python_doctest_log.txt"
+    },
+    {
+      "name": "doc_coverage",
+      "exit_code": 0,
+      "log": "review/doc_coverage_log.txt"
+    },
+    {
+      "name": "repository_links",
+      "exit_code": 0,
+      "log": "review/repository_links_log.txt"
+    },
+    {
+      "name": "sphinx_doctest",
+      "exit_code": 0,
+      "log": "review/sphinx_doctest_log.txt"
+    },
+    {
+      "name": "sphinx_html",
+      "exit_code": 0,
+      "log": "review/sphinx_html_log.txt"
+    }
+  ]
+}

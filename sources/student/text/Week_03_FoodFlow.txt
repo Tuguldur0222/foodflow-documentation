@@ -1,0 +1,386 @@
+Лабораторийн ажил 3 FoodFlow SRS v1.0
+Хүрээ: Customer талын онлайн хоол захиалга. Энэ баримт нь хийх ёстой зан төлөв, шалгах нөхцөлийг тогтооно; ажилладаг системийн test report биш. Эх сурвалж нь W01 persona ба W02 Scope Charter.
+1 Зорилго, хэрэглэгч, хил
+Customer Menu, Cart, Checkout, My Orders ашиглана. Restaurant staff захиалгын төлөвийг шинэчилнэ, courier хүргэлтийн мэдээлэл өгнө. Payment Provider төлбөрийг, Notification Provider мессежийг боловсруулна. FoodFlow картын raw дугаарыг хадгалахгүй. Хүсэлт HTTPS/JSON; API-ийн алдаа code болон message гэсэн тогтмол талбартай.
+Эрэмбэ: MUST нь эхний хувилбар, SHOULD нь нөөц хүрэлцвэл, COULD нь хойшлуулж болох боломж. Хэмжүүргүй “хурдан”, “хялбар” гэдэг үгийг pass/fail болгоогүй. Нэг шаардлагын эхэнд хэрэглэгчид харагдах үр дүнг бичлээ.
+2 15 функцийн шаардлага ба test procedure
+FR-01 Хоолны жагсаалт
+Шаардлага: Систем идэвхтэй хоол бүрийн нэр, үнэ, зураг, товч тайлбарыг Menu-д харуулна. Эрэмбэ: MUST.
+TC-FR01 тест: Өгөгдсөн нь: 10 active, 2 inactive хоолтой test өгөгдөл. Хийх үйлдэл: Menu нээх. Ажиглах үр дүн: 10 active хоол бүгд харагдана, inactive 0. Pass: Идэвхтэй 10/10, идэвхгүй 0/2. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Ану хэрэглэгчийн эхлэх алхам. Хамаарал: Catalog API.
+Acceptance mock UI: дараах хар цагаан зурагт Хоолны жагсаалт үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Хоолны жагсаалт - FR-01 mock UI
+FR-02 Хоол хайх
+Шаардлага: Систем нэрийн хэсгээр хайж, ангиллаар шүүнэ. Эрэмбэ: MUST.
+TC-FR02 тест: Өгөгдсөн нь: Burger нэртэй 2, бусад 3 хоол. Хийх үйлдэл: Burger гэж бичээд хайх. Ажиглах үр дүн: Burger нэртэй 2 хоол гарна. Pass: 2/2 тохирох, 0/3 тохироогүй. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer journey. Хамаарал: FR-01.
+FR-03 Хоолны дэлгэрэнгүй
+Шаардлага: Сонгосон хоолны нэр, үнэ, орц, харшил үүсгэгч, тайлбарыг харуулна. Эрэмбэ: SHOULD.
+TC-FR03 тест: Өгөгдсөн нь: Тавууланг нь бөглөсөн хоол. Хийх үйлдэл: Food detail нээх. Ажиглах үр дүн: Таван талбар харагдана. Pass: 5/5 талбар хоосон биш. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer journey. Хамаарал: FR-01.
+FR-04 Сагсанд нэмэх
+Шаардлага: Сонгосон хоолыг quantity=1-ээр сагсанд нэмнэ. Эрэмбэ: MUST.
+TC-FR04 тест: Өгөгдсөн нь: Хоосон сагс, burger ID=7. Хийх үйлдэл: Add to cart нэг удаа дарах. Ажиглах үр дүн: ID=7, quantity=1, badge=1. Pass: Хариунд яг нэг item, зөв ID. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: W01 Ану: API/UI холбоо. Хамаарал: FR-01.
+Acceptance mock UI: дараах хар цагаан зурагт Сагсанд нэмэх үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Сагсанд нэмэх - FR-04 mock UI
+FR-05 Тоо ширхэг өөрчлөх
+Шаардлага: Сагсны item-ийн quantity-г 1–10 хооронд өөрчилж subtotal-ийг шинэчилнэ. Эрэмбэ: MUST.
+TC-FR05 тест: Өгөгдсөн нь: 18,000₮ burger, quantity=1. Хийх үйлдэл: + дарж 2 болгох. Ажиглах үр дүн: Quantity=2, subtotal=36,000₮. Pass: 1≤quantity≤10 ба subtotal зөв. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer cart journey. Хамаарал: FR-04.
+FR-06 Сагснаас устгах
+Шаардлага: Хэрэглэгч сонгосон item-ийг сагснаас арилгана. Эрэмбэ: MUST.
+TC-FR06 тест: Өгөгдсөн нь: Сагсанд ID=7, ID=8 хоол. Хийх үйлдэл: ID=7 дээр Remove дарах. Ажиглах үр дүн: Зөвхөн ID=8 үлдэнэ. Pass: ID=7 response-д 0 удаа. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer cart journey. Хамаарал: FR-04.
+FR-07 Нийт үнэ
+Шаардлага: Систем subtotal + delivery fee − discount томьёогоор нийт үнийг төгрөгөөр тооцно. Эрэмбэ: MUST.
+TC-FR07 тест: Өгөгдсөн нь: 36,000₮ subtotal, 3,000₮ fee, 2,000₮ discount. Хийх үйлдэл: Checkout summary нээх. Ажиглах үр дүн: Total=37,000₮. Pass: Томьёоны зөрүү 0₮. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer price clarity. Хамаарал: FR-04–06.
+FR-08 Хүргэлтийн хаяг
+Шаардлага: Дүүрэг, хороо, гудамж/байр, утсыг заавал авч order draft-д хадгална. Эрэмбэ: MUST.
+TC-FR08 тест: Өгөгдсөн нь: Хаягийн дөрвөн талбартай form. Хийх үйлдэл: Нэг талбарыг хоослоод Save дарах; дараа бүхнийг бөглөх. Ажиглах үр дүн: Хоосон үед алдаа; бүрэн үед хадгална. Pass: Дутуу үед draft үүсэхгүй; бүрэн үед 4/4. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer delivery journey. Хамаарал: FR-11.
+Acceptance mock UI: дараах хар цагаан зурагт Хүргэлтийн хаяг үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Хүргэлтийн хаяг - FR-08 mock UI
+FR-09 Хүргэлтийн цаг
+Шаардлага: API-аас ирсэн боломжтой цагийн цонхоос нэгийг сонгож хадгална. Эрэмбэ: COULD.
+TC-FR09 тест: Өгөгдсөн нь: 09:00–10:00 available, 10:00–11:00 unavailable. Хийх үйлдэл: Хоёр дахь сонголтыг туршаад эхнийхийг сонгох. Ажиглах үр дүн: Боломжгүйг хориглоно; эхнийхийг хадгална. Pass: Зөвхөн available ID үлдэнэ. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer delivery preference. Хамаарал: FR-08.
+FR-10 Төлбөрийн арга
+Шаардлага: QPay, bank card, cash on delivery сонголтын яг нэгийг order draft-д хадгална. Эрэмбэ: MUST.
+TC-FR10 тест: Өгөгдсөн нь: Гурван сонголттой form. Хийх үйлдэл: QPay сонгоод Continue дарах. Ажиглах үр дүн: payment_method=QPay. Pass: Дэмжих гурав дотроос зөвхөн нэг. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer checkout journey. Хамаарал: Payment provider.
+Acceptance mock UI: дараах хар цагаан зурагт Төлбөрийн арга үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Төлбөрийн арга - FR-10 mock UI
+FR-11 Захиалга үүсгэх
+Шаардлага: Зөв сагс, хаяг, төлбөртэй үед Place Order яг нэг order үүсгэж order_id буцаана. Эрэмбэ: MUST.
+TC-FR11 тест: Өгөгдсөн нь: Valid checkout, ижил Idempotency-Key. Хийх үйлдэл: Place Order-ийг дараалан 2 удаа илгээх. Ажиглах үр дүн: Нэг order_id, HTTP 201/давтан ижил үр дүн. Pass: DB дахь шинээр үүссэн order = 1. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Checkout story; W01 Билэгт. Хамаарал: FR-04/08/10, NFR-02.
+Acceptance mock UI: дараах хар цагаан зурагт Захиалга үүсгэх үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Захиалга үүсгэх - FR-11 mock UI
+FR-12 Захиалгын төлөв
+Шаардлага: Нэвтэрсэн хэрэглэгч өөрийн order-ийн Pending, Confirmed, Preparing, Out for delivery, Delivered, Cancelled-ийн нэг одоогийн төлөвийг харна. Эрэмбэ: MUST.
+TC-FR12 тест: Өгөгдсөн нь: А-ийн order=Preparing, B-ийн өөр order. Хийх үйлдэл: А өөрийнх болон B-ийн ID-ийг нээх. Ажиглах үр дүн: Өөрийнх Preparing; B-ийнх 403/404. Pass: DB төлөв таарна; B-ийн өгөгдөл 0. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: W01 Номин: support ойлгомж. Хамаарал: FR-11, NFR-03.
+Acceptance mock UI: дараах хар цагаан зурагт Захиалгын төлөв үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Захиалгын төлөв - FR-12 mock UI
+FR-13 Захиалга цуцлах
+Шаардлага: Зөвхөн Pending/Confirmed төлөвтэй order-ийг цуцалж, Preparing-д 409 буцаана. Эрэмбэ: SHOULD.
+TC-FR13 тест: Өгөгдсөн нь: Confirmed ба Preparing хоёр order. Хийх үйлдэл: Тус бүрд Cancel дарах. Ажиглах үр дүн: Confirmed→Cancelled; Preparing→409. Pass: Зөвшөөрөгдөөгүй төлөв огт солигдоогүй. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer cancellation story. Хамаарал: FR-12.
+FR-14 Захиалгын түүх
+Шаардлага: Хэрэглэгч зөвхөн өөрийн order-уудыг огноо буурах дарааллаар харна. Эрэмбэ: SHOULD.
+TC-FR14 тест: Өгөгдсөн нь: А-ийн 3, B-ийн 2 order. Хийх үйлдэл: А My Orders нээх. Ажиглах үр дүн: А-ийн 3 newest-first. Pass: B-ийн 0; А-ийн 3/3 зөв дараалал. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: W01 Номин: order query. Хамаарал: FR-11/12, NFR-03.
+Acceptance mock UI: дараах хар цагаан зурагт Захиалгын түүх үйлдлийн шаардлагатай мэдээлэл харагдана. Зураг нь ажиллаж буй системийн screenshot биш.
+
+Захиалгын түүх - FR-14 mock UI
+FR-15 Амжилтын баталгаа
+Шаардлага: Order үүсэхэд order_id, total, estimated delivery time-ийг харуулна. Эрэмбэ: MUST.
+TC-FR15 тест: Өгөгдсөн нь: Амжилттай ба алдаатай хоёр checkout. Хийх үйлдэл: Дараалан тус бүр Place Order хийх. Ажиглах үр дүн: Амжилтад 3 талбар; алдаанд success screen байхгүй. Pass: Амжилтад 3/3; алдаанд 0 success. Fail: эсрэгээр эсвэл өгөгдөл буруу хадгалагдвал. Арга: test / inspection; W03 trial run-д баталгаажуулах.
+Эх сурвалж: Customer confidence. Хамаарал: FR-11.
+3 Таван хэмжигдэх NFR
+ID / төрөл
+Эрэмбэ ба шаардлага
+Pass/fail хязгаар
+Шалгах арга
+Эх сурвалж / FR
+NFR-01 Performance
+MUST; Menu-ийн Largest Contentful Paint mobile test 30 run-ийн p75 дээр ≤2.5 секунд байна.
+p75 LCP ≤2.5 s
+30 удаагийн controlled mobile Lighthouse run, 75th percentile
+Google web.dev/articles/lcp; Akamai retail performance report нь хурд чухлыг дэмжинэ; FR-01
+NFR-02 Reliability
+MUST; Ижил Idempotency-Key-тэй нэг checkout-ийг давтан илгээхэд хоёр order үүсэхгүй.
+100 retry туршилтад duplicate=0
+100 concurrent/retry API test, DB order count
+FoodFlow төлөвлөсөн үйлчилгээний зорилт; FR-11
+NFR-03 Security
+MUST; А хэрэглэгч B-ийн order-ийг унших буюу өөрчлөх боломжгүй.
+100 эрхгүй хүсэлтэд мэдээлэл алдах тохиолдол 0
+100 IDOR/authorization test; response ба audit log
+FoodFlow хэрэглэгчийн нууцлалын хил; FR-12, FR-14
+NFR-04 Availability
+SHOULD; Core ordering API-ийн сарын хэмжсэн uptime ≥99.5% байна.
+30 хоногийн uptime ≥99.5%
+Synthetic probe 1 минут тутам, төлөвлөсөн maintenance-ийг тусад нь тайлагнах
+FoodFlow төслийн үйлчилгээний зорилт; FR-11
+NFR-05 Accessibility
+MUST; Menu→Cart→Checkout→Payment→Place Order урсгал бүхэлдээ keyboard-аар ажиллана.
+Чухал controls-ийн 100% focus/activate
+Keyboard-only manual test + accessibility checker
+Keyboard хэрэглэгчийн хэрэгцээ; FR-01, FR-04, FR-08, FR-10, FR-11
+NFR-01-ийн 2.5 секундийг Google-ийн LCP тайлбар-аас авсан. Akamai-ийн e-commerce хурдны судалгаа нь удаашрал хэрэглэгчийн үйлдэлд нөлөөлөхийг тайлбарладаг; яг 2.5 секунд тогтоосон гэж Akamai-д хамааруулаагүй.
+4 Гаднах интерфейс ба өгөгдөл
+Веб UI нь Menu, Cart, Address, Payment, Order Summary, Status, History дэлгэцтэй. API-ийн нэршил жишээ нь GET /api/v1/menu, POST /api/v1/orders, GET /api/v1/orders/{id}; хамгаалалттай хүсэлт Bearer token авна. Алдааны JSON-ийн үндсэн хэлбэр нь code, message, шаардлагатай үед field; payment/notification provider-ийн бодит credentials болон URL нь deployment шийдвэр гараагүй тул жишээ гэж тэмдэглэнэ.
+5 Найман баганатай мөрдөх хүснэгт
+ID
+Source
+Owner
+Verification
+Dependency
+Risk
+Status
+Last-Reviewed
+FR-01
+Ану хэрэглэгчийн эхлэх алхам
+Product/QA
+TC-FR01
+Catalog API
+High
+v1.0 draft
+2026-09-28
+FR-02
+Customer journey
+Product/QA
+TC-FR02
+FR-01
+High
+v1.0 draft
+2026-09-28
+FR-03
+Customer journey
+Product/QA
+TC-FR03
+FR-01
+Medium
+v1.0 draft
+2026-09-28
+FR-04
+W01 Ану: API/UI холбоо
+Engineering/QA
+TC-FR04
+FR-01
+High
+v1.0 draft
+2026-09-28
+FR-05
+Customer cart journey
+Engineering/QA
+TC-FR05
+FR-04
+High
+v1.0 draft
+2026-09-28
+FR-06
+Customer cart journey
+Engineering/QA
+TC-FR06
+FR-04
+High
+v1.0 draft
+2026-09-28
+FR-07
+Customer price clarity
+Engineering/QA
+TC-FR07
+FR-04–06
+High
+v1.0 draft
+2026-09-28
+FR-08
+Customer delivery journey
+Engineering/QA
+TC-FR08
+FR-11
+High
+v1.0 draft
+2026-09-28
+FR-09
+Customer delivery preference
+Engineering/QA
+TC-FR09
+FR-08
+Medium
+v1.0 draft
+2026-09-28
+FR-10
+Customer checkout journey
+Engineering/QA
+TC-FR10
+Payment provider
+High
+v1.0 draft
+2026-09-28
+FR-11
+Checkout story; W01 Билэгт
+Engineering/QA
+TC-FR11
+FR-04/08/10, NFR-02
+High
+v1.0 draft
+2026-09-28
+FR-12
+W01 Номин: support ойлгомж
+Engineering/QA
+TC-FR12
+FR-11, NFR-03
+High
+v1.0 draft
+2026-09-28
+FR-13
+Customer cancellation story
+Engineering/QA
+TC-FR13
+FR-12
+Medium
+v1.0 draft
+2026-09-28
+FR-14
+W01 Номин: order query
+Engineering/QA
+TC-FR14
+FR-11/12, NFR-03
+Medium
+v1.0 draft
+2026-09-28
+FR-15
+Customer confidence
+Engineering/QA
+TC-FR15
+FR-11
+High
+v1.0 draft
+2026-09-28
+NFR-01
+Google web.dev/articles/lcp; Akamai retail performance report нь хурд чухлыг дэмжинэ
+Engineering/QA
+TC-NFR01
+FR-01
+High
+v1.0 draft
+2026-09-28
+NFR-02
+FoodFlow төлөвлөсөн үйлчилгээний зорилт
+Engineering/QA
+TC-NFR02
+FR-11
+High
+v1.0 draft
+2026-09-28
+NFR-03
+FoodFlow хэрэглэгчийн нууцлалын хил
+Engineering/QA
+TC-NFR03
+FR-12, FR-14
+High
+v1.0 draft
+2026-09-28
+NFR-04
+FoodFlow төслийн үйлчилгээний зорилт
+Engineering/QA
+TC-NFR04
+FR-11
+Medium
+v1.0 draft
+2026-09-28
+NFR-05
+Keyboard хэрэглэгчийн хэрэгцээ
+Engineering/QA
+TC-NFR05
+FR-01, FR-04, FR-08, FR-10, FR-11
+High
+v1.0 draft
+2026-09-28
+Хүснэгтэд 15 FR, 5 NFR байна. Ямар нэг FR эх сурвалжгүй эсвэл TC дугааргүй үлдээгүй. Хэрэглэгчид яг юу харагдахыг mock UI-тай холбосон FR-01, 04, 08, 10, 11, 12, 14 нь 5-аас олон зурагтай.
+6 Use Verify Cite AI draft ба засвар
+Энэ хэсгийн богино AI candidate өгүүлбэрүүдийг сургалтын харьцуулалтын зориулалтаар AI-аар шинээр үүсгэсэн. Тэдгээрийг бодит системийн шалгалт эсвэл GPT-4-ийн тодорхой ажиллуулалтын transcript гэж нэрлээгүй.
+AI-д гарсан ноорог
+Алдаа
+Шалгаж зассан SRS текст
+Эх сурвалж
+“Menu хурдан нээгдэнэ.”
+Хэмжих босгогүй
+NFR-01: 30 mobile run, p75 LCP ≤2.5 s
+Google web.dev/articles/lcp; W03 handout
+“Хэрэглэгч амархан захиална.”
+Оролт/үр дүн тодорхойгүй
+FR-11: valid checkout үед нэг order_id, давтан key-д duplicate=0
+W02 Scope Charter; W01 Ану
+“Хүн бүх захиалгаа харна.”
+Өөр хүний order харах эрсдэл
+FR-12/14 + NFR-03: өөрийн order, 100 эрхгүй хүсэлтэд 0 leak
+W01 Номин; төслийн нууцлалын хил
+AI өгүүлбэрийг шууд хуулсангүй: эхлээд ашиглах эсэхийг шийдэж, дараа нь тоон хязгаар ба эрхийн нөхцөлийг шалгаад, дээрх эх сурвалжтай нь холбосон. Энэ нь Use → Verify → Cite дараалал.
+7 v0.9 → v1.0 засвар ба review-ийн бодит байдал
+Засвар хийхэд ашигласан v0.9-ийн гурван сул мөр болон хяналтын маягт-ыг хамт хадгалсан. Дараах нь өөрийн редакцийн гурван шалгалт, бодит peer team-ийн Confluence comment биш.
+Өөрийн шалгалтаар олдсон зүйл
+v0.9
+v1.0-д хийсэн засвар
+Эх сурвалж
+Нийт үнэ тодорхойгүй
+FR-07 “зөв үнэ”
+subtotal + fee − discount; test зөрүү 0₮
+TC-FR07
+Давтан захиалгын үр дүн тодорхойгүй
+FR-11 “үүсгэнэ”
+Ижил key-ээр хоёр дарахад DB order яг 1
+TC-FR11, NFR-02
+Өөр хүний order-ийн хил алга
+FR-12 “төлөв харах”
+Зөвхөн өөрийн order; 403/404, мэдээлэл 0
+TC-FR12, NFR-03
+Бодит peer review хийхэд нэр, өдөр, Confluence comment холбоос, санал бүрийн шийдвэрийг маягтад нөхөж бичнэ. “3 peer comments addressed” гэж одоогоор тэмдэглэхгүй.
+8 UE-3 Corg.ly таван FR ба нэг хуудасны эргэцүүлэл
+UE-3-ийн тусдаа даалгавар-д таван FR, AI хувилбарын гурван алдаа, нэг хуудасны тайлбар бий. Энд Pet Translation API-ийн шаардлага FoodFlow-тэй холилдохгүй.
+9 Definition of Done ба үлдсэн бодит ажил
+Шалгуур
+Одоогийн байдал
+15 FR + 5 NFR, test, ≥5 mock UI
+Баримтын хувьд бэлэн; 20/20 мөр тестийн төлөвлөгөөтэй.
+AI-ийн 3 ялгаа ба засвар
+Энэ баримтад 3/3 жишээ байна.
+Бодит peer team-ийн ≥3 Confluence comment
+Маягт бэлэн; гаднын review хүлээгдэнэ.
+Ажилладаг системийн trial test ≥80%
+Системийн ажиллах хувилбар байхгүй; pass хувь зохиогоогүй.
+M3 milestone
+Багш/LMS-ийн үнэлгээгүй тул баталгаажсан гэж бичээгүй.
+Эргэцүүлэл: Bhatti Ch. 3 p. 58-ын “гол мэдээллээ эхэнд” дүрэм нь FR-11-ийг тестийн урт алхмаар биш “яг нэг захиалга” гэсэн үр дүнгээр эхлүүлэхэд тусалсан. Chinchilla-ийн уншигчид тохирсон богино бүтэц нь test-ийг тусдаа өгүүлбэр болгох шалтгаан болов. Номын “review хий” гэдэг дүрэм бодит sprint-д хүнээс хариу авах хугацаа шаарддаг; энэ саадыг худал reviewer нэрээр нөхөхгүй.
+Эх сурвалж: Хавсаргасан Week 03 handout pp. 1–4; Lecture 03; Week 01 persona; Week 02 Scope Charter; дээрх бодит performance эх сурвалжууд.
+UE-3 Corg.ly Pet Translation API
+Энэ бол Week 03-ийн заавал хийх тусдаа сургалтын дасгал. Corg.ly нь handout-ийн зохиомол нөхцөл; API-ийн бодит ажиллагаа болон AI чатны transcript гэж мэдүүлэхгүй. Шаардлага бүр эхлээд хэрэглэгчид харагдах үр дүнг хэлээд, дараа нь шалгах алхмыг өгсөн.
+ID
+Үр дүнгээр эхэлсэн функциональ шаардлага
+Шалгах нөхцөл
+C-FR-01
+Developer зөв API key-ээр нэвтэрвэл translate endpoint-д хүсэлт илгээж чадна.
+Зөв Bearer key-тэй POST /v1/translate → 200; key-гүй → 401.
+C-FR-02
+Зөв text, sourceLanguage, targetLanguage илгээвэл хариунд translation харагдана.
+3 талбар бүхий JSON → 200 ба хоосон биш translation; text хоосон → 400.
+C-FR-03
+Дэмжигдээгүй хэл сонговол ойлгомжтой алдааны код буцна.
+targetLanguage=xx → 422, code=unsupported_language.
+C-FR-04
+Ижил хүсэлтийг түр алдааны дараа дахин илгээж чадна.
+Эхний оролдлого 503, дараагийнх 200; нийт 3-аас олон оролдлого хийхгүй.
+C-FR-05
+Rate limit давбал дахин хэзээ оролдохоо мэднэ.
+Хязгаар давсан хүсэлт → 429 + Retry-After секундийн утга.
+Эзэмшигч ба status: Энэ таван мөрийг Charlotte-ийн launch ноорог гэж үзнэ; rate limit, error code, хэлний жагсаалтыг API багийн гэрээгээр батлахаас өмнө нийтлэхгүй. Иймээс тэдгээрийг “баталгаажсан бүтээгдэхүүний шаардлага” гэж мэдүүлээгүй.
+AI-ийн хувилбарын гурван алдаа
+Доорх “AI candidate” баганын өгүүлбэрүүдийг сургалтын харьцуулалт хийх зорилгоор AI-аар энд шинээр бичүүлсэн жишээ гэж үзнэ; GPT-4/Claude-ийн тусдаа ажиллуулалтын бүртгэл биш.
+AI candidate
+Яагаад товч/хэрэглэхэд амар биш вэ?
+Хүний баталгаажуулалтад өгөх засвар
+“The service provides a seamless and highly reliable authentication experience.”
+“Seamless”, “highly reliable” нь хэмжүүргүй.
+C-FR-01: зөв key → 200, байхгүй → 401.
+“The API translates any pet message into every language.”
+Батлаагүй бүх хэл/бүх амьтан гэсэн хэт амлалт.
+C-FR-03: зөвхөн батлагдсан хэл; бусдад 422.
+“Retry all errors until it works.”
+4xx алдаанд хэрэггүй retry, хэрэглэгчид хүлээлт нэмнэ.
+C-FR-04: зөвхөн 503 зэрэг түр алдаанд дээд тал нь 3 удаа.
+Нэг хуудасны эргэцүүлэл
+Би Charlotte-ийн оронд байсан бол API-г “сайн ажиллана” гэж магтахын өмнө Маяа гэдэг developer ямар хүсэлт илгээхийг харах байсан. Нэвтрэх key нь хаанаас ирэх, ямар header-д орох, буруу key-тэй үед юу болохыг нэг дор бичихэд тэр эхний request-ээ ажиллуулж чадна. Шаардлагаа үр дүнгээр эхлүүлэх дүрэм энд тусалсан: “Developer орчуулга харна” гэдэг нь “JSON body илгээнэ” гэх ажлын алхмаас илүү чухал.
+AI-ийн ноорог хурдан гардаг ч “every language” шиг үг API-ийн бодит хүрээг хэтрүүлж болно. “Retry all errors” гэвэл буруу key-тэй 401 алдааг дахин дахин илгээх аюултай. Тиймээс AI өгүүлбэр бүрийг endpoint эзнээс лавлаж, боломжтой код болон шалгаж болох үр дүнгээр нь засна. Ялангуяа хэлний жагсаалт, Retry-After, 429-ийн бодлого баталгаажаагүй бол түүнийг үнэн мэт нийтлэхгүй.
+Charlotte зөвхөн API багийн бичсэнийг орчуулж дамжуулахгүй. Product, support, DevRel-ийн асуултыг нэг дор авч, эхний туршилт хийх developer болон түүний аппын эцсийн хэрэглэгчид ямар мэдээлэл хэрэгтэйг эрэмбэлнэ. Зохиогч бүгдийг мэддэг гэж бодох нь хамгийн том сул тал. Launch-ийн өмнө батлагдаагүй зүйлээ жагсааж, эзнээр нь шийдвэрлүүлэх нь гоё өгүүлбэр нэмэхээс илүү хэрэгтэй.
+Эх сурвалж: Week 03 handout UE-3; Bhatti Ch. 3 p. 58, Ch. 5 pp. 90, 93; Chinchilla Ch. 9 pp. 119–131 (хуудасны заалт handout-аас).

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 230" role="img" aria-label="FoodFlow documentation">
+<rect width="1100" height="230" rx="22" fill="#142b37"/>
+<path d="M0 190 Q220 85 480 170 T1100 120 V230 H0Z" fill="#1c4650"/>
+<circle cx="110" cy="105" r="58" fill="#c7edd9"/>
+<path d="M75 115a35 35 0 0170 0zm-8 8h86M110 73v8" fill="none" stroke="#142b37" stroke-width="7" stroke-linecap="round"/>
+<text x="205" y="95" font-family="Arial,sans-serif" font-size="43" font-weight="700" fill="white">FoodFlow</text>
+<text x="208" y="135" font-family="Arial,sans-serif" font-size="21" fill="#c7edd9">Software Project Documentation</text>
+<text x="208" y="180" font-family="Arial,sans-serif" font-size="16" fill="#d6e4e9">Audience → Requirements → Architecture → API → Verification</text>
+<text x="900" y="75" font-family="Arial,sans-serif" font-size="16" fill="#c7edd9">SEMINARS</text>
+<text x="900" y="120" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="white">01—06</text>
+</svg>

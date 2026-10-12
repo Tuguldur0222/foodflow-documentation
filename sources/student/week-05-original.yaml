@@ -1,0 +1,662 @@
+openapi: 3.0.3
+info:
+  title: FoodFlow API – W05 сургалтын гэрээ
+  version: 1.0.0
+  description: W03 SRS-ийн FR-04, 05, 08, 10, 11-той холбосон локал mock API. Жишээ JSON нь энэ repo-ийн mock серверээс
+    шалгагдсан; production үйлчилгээний баталгаа биш.
+servers:
+- url: http://127.0.0.1:8765
+  description: Локал сургалтын mock сервер
+tags:
+- name: FoodFlow
+  description: Customer захиалгын үндсэн урсгал
+security:
+- BearerAuth: []
+paths:
+  /api/v1/carts/{cart_id}/items:
+    post:
+      tags:
+      - FoodFlow
+      summary: Сагсанд хоол нэмэх
+      description: FR-04. food_id 7 нь сургалтын Burger бөгөөд 18,000₮.
+      operationId: addCartItem
+      parameters:
+      - $ref: '#/components/parameters/CartId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCartItem'
+            example:
+              food_id: 7
+              quantity: 1
+      responses:
+        '200':
+          description: Амжилттай
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+              example:
+                cart_id: cart_101
+                item_id: ci_1
+                food_id: 7
+                quantity: 1
+                subtotal_mnt: 18000
+        '400':
+          description: Оролтын утга буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: invalid_request
+                message: Хүсэлтийн утгыг шалгана уу.
+        '401':
+          description: Bearer token байхгүй эсвэл буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: unauthorized
+                message: Нэвтрэх token шаардлагатай.
+        '404':
+          description: Сагс, item эсвэл захиалгын draft олдсонгүй
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: not_found
+                message: Нөөц олдсонгүй.
+        '409':
+          description: Одоогийн төлөв эсвэл idempotency key-ийн агуулга зөрсөн
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: conflict
+                message: Одоогийн төлөвтэй зөрчилдөв.
+        '500':
+          description: Серверийн алдаа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: internal_error
+                message: Серверийн түр алдаа.
+      security:
+      - BearerAuth: []
+  /api/v1/carts/{cart_id}/items/{item_id}:
+    patch:
+      tags:
+      - FoodFlow
+      summary: Хоолны тоо өөрчлөх
+      description: FR-05. Quantity 1–10, нэгж үнэ 18,000₮.
+      operationId: changeCartQuantity
+      parameters:
+      - $ref: '#/components/parameters/CartId'
+      - $ref: '#/components/parameters/ItemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeQuantity'
+            example:
+              quantity: 2
+      responses:
+        '200':
+          description: Амжилттай
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+              example:
+                cart_id: cart_101
+                item_id: ci_1
+                food_id: 7
+                quantity: 2
+                subtotal_mnt: 36000
+        '400':
+          description: Оролтын утга буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: invalid_request
+                message: Хүсэлтийн утгыг шалгана уу.
+        '401':
+          description: Bearer token байхгүй эсвэл буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: unauthorized
+                message: Нэвтрэх token шаардлагатай.
+        '404':
+          description: Сагс, item эсвэл захиалгын draft олдсонгүй
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: not_found
+                message: Нөөц олдсонгүй.
+        '409':
+          description: Одоогийн төлөв эсвэл idempotency key-ийн агуулга зөрсөн
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: conflict
+                message: Одоогийн төлөвтэй зөрчилдөв.
+        '500':
+          description: Серверийн алдаа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: internal_error
+                message: Серверийн түр алдаа.
+      security:
+      - BearerAuth: []
+  /api/v1/orders/{draft_id}/address:
+    put:
+      tags:
+      - FoodFlow
+      summary: Хүргэлтийн хаяг хадгалах
+      description: FR-08. Дөрвөн шаардлагатай талбарыг шалгана.
+      operationId: saveDeliveryAddress
+      parameters:
+      - $ref: '#/components/parameters/DraftId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+            example:
+              district: Сүхбаатар
+              khoroo: 8
+              street: Бага тойруу 12-5
+              phone: '99112233'
+      responses:
+        '200':
+          description: Амжилттай
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedAddress'
+              example:
+                order_id: draft_1024
+                address:
+                  district: Сүхбаатар
+                  khoroo: 8
+                  street: Бага тойруу 12-5
+                  phone: '99112233'
+        '400':
+          description: Оролтын утга буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: invalid_request
+                message: Хүсэлтийн утгыг шалгана уу.
+        '401':
+          description: Bearer token байхгүй эсвэл буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: unauthorized
+                message: Нэвтрэх token шаардлагатай.
+        '404':
+          description: Сагс, item эсвэл захиалгын draft олдсонгүй
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: not_found
+                message: Нөөц олдсонгүй.
+        '409':
+          description: Одоогийн төлөв эсвэл idempotency key-ийн агуулга зөрсөн
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: conflict
+                message: Одоогийн төлөвтэй зөрчилдөв.
+        '500':
+          description: Серверийн алдаа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: internal_error
+                message: Серверийн түр алдаа.
+      security:
+      - BearerAuth: []
+  /api/v1/orders/{draft_id}/payment-method:
+    put:
+      tags:
+      - FoodFlow
+      summary: Төлбөрийн арга хадгалах
+      description: FR-10. Гурван аргын яг нэгийг сонгоно.
+      operationId: savePaymentMethod
+      parameters:
+      - $ref: '#/components/parameters/DraftId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentChoice'
+            example:
+              payment_method: QPay
+      responses:
+        '200':
+          description: Амжилттай
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedPayment'
+              example:
+                order_id: draft_1024
+                payment_method: QPay
+        '400':
+          description: Оролтын утга буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: invalid_request
+                message: Хүсэлтийн утгыг шалгана уу.
+        '401':
+          description: Bearer token байхгүй эсвэл буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: unauthorized
+                message: Нэвтрэх token шаардлагатай.
+        '404':
+          description: Сагс, item эсвэл захиалгын draft олдсонгүй
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: not_found
+                message: Нөөц олдсонгүй.
+        '409':
+          description: Одоогийн төлөв эсвэл idempotency key-ийн агуулга зөрсөн
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: conflict
+                message: Одоогийн төлөвтэй зөрчилдөв.
+        '500':
+          description: Серверийн алдаа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: internal_error
+                message: Серверийн түр алдаа.
+      security:
+      - BearerAuth: []
+  /api/v1/orders:
+    post:
+      tags:
+      - FoodFlow
+      summary: Нэг захиалга үүсгэх
+      description: FR-11 ба NFR-02. Шинэ key-д 201; ижил key, ижил body давтахад 200 ба өмнөх order_id; өөр body-д
+        409.
+      operationId: placeOrder
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceOrder'
+            example:
+              cart_id: cart_101
+              address:
+                district: Сүхбаатар
+                khoroo: 8
+                street: Бага тойруу 12-5
+                phone: '99112233'
+              payment_method: QPay
+      responses:
+        '201':
+          description: Амжилттай
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResult'
+              example:
+                order_id: FF-1024
+                status: Pending
+                total_mnt: 39000
+        '200':
+          description: 'Ижил key-ийн давтан хүсэлт: өмнөх order'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResult'
+              example:
+                order_id: FF-1024
+                status: Pending
+                total_mnt: 39000
+        '400':
+          description: Оролтын утга буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: invalid_request
+                message: Хүсэлтийн утгыг шалгана уу.
+        '401':
+          description: Bearer token байхгүй эсвэл буруу
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: unauthorized
+                message: Нэвтрэх token шаардлагатай.
+        '404':
+          description: Сагс, item эсвэл захиалгын draft олдсонгүй
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: not_found
+                message: Нөөц олдсонгүй.
+        '409':
+          description: Одоогийн төлөв эсвэл idempotency key-ийн агуулга зөрсөн
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: conflict
+                message: Одоогийн төлөвтэй зөрчилдөв.
+        '500':
+          description: Серверийн алдаа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: internal_error
+                message: Серверийн түр алдаа.
+      security:
+      - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Локал mock-ийн турших token: demo-customer-token. Production нууц түлхүүр биш.'
+  parameters:
+    CartId:
+      name: cart_id
+      in: path
+      required: true
+      description: Сагсны ID
+      schema:
+        type: string
+      example: cart_101
+    ItemId:
+      name: item_id
+      in: path
+      required: true
+      description: Сагсны мөрийн ID
+      schema:
+        type: string
+      example: ci_1
+    DraftId:
+      name: draft_id
+      in: path
+      required: true
+      description: Захиалгын нооргийн ID
+      schema:
+        type: string
+      example: draft_1024
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: Ижил payload-тай давтахад 24 цагт ижил үр дүн
+      schema:
+        type: string
+      example: ff-order-1024
+  schemas:
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          example: invalid_request
+        message:
+          type: string
+          example: Хүсэлтийн утгыг шалгана уу.
+        field:
+          type: string
+          example: quantity
+      example:
+        code: invalid_request
+        message: Хүсэлтийн утгыг шалгана уу.
+    Address:
+      type: object
+      required:
+      - district
+      - khoroo
+      - street
+      - phone
+      properties:
+        district:
+          type: string
+          example: Сүхбаатар
+        khoroo:
+          type: integer
+          example: 8
+        street:
+          type: string
+          example: Бага тойруу 12-5
+        phone:
+          type: string
+          pattern: ^[0-9]{8}$
+          example: '99112233'
+      example:
+        district: Сүхбаатар
+        khoroo: 8
+        street: Бага тойруу 12-5
+        phone: '99112233'
+    AddCartItem:
+      type: object
+      required:
+      - food_id
+      - quantity
+      properties:
+        food_id:
+          type: integer
+          example: 7
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
+      example:
+        food_id: 7
+        quantity: 1
+    CartItem:
+      type: object
+      required:
+      - cart_id
+      - item_id
+      - food_id
+      - quantity
+      - subtotal_mnt
+      properties:
+        cart_id:
+          type: string
+          example: cart_101
+        item_id:
+          type: string
+          example: ci_1
+        food_id:
+          type: integer
+          example: 7
+        quantity:
+          type: integer
+          example: 1
+        subtotal_mnt:
+          type: integer
+          example: 18000
+      example:
+        cart_id: cart_101
+        item_id: ci_1
+        food_id: 7
+        quantity: 1
+        subtotal_mnt: 18000
+    ChangeQuantity:
+      type: object
+      required:
+      - quantity
+      properties:
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 2
+      example:
+        quantity: 2
+    SavedAddress:
+      type: object
+      required:
+      - order_id
+      - address
+      properties:
+        order_id:
+          type: string
+          example: draft_1024
+        address:
+          $ref: '#/components/schemas/Address'
+      example:
+        order_id: draft_1024
+        address:
+          district: Сүхбаатар
+          khoroo: 8
+          street: Бага тойруу 12-5
+          phone: '99112233'
+    PaymentChoice:
+      type: object
+      required:
+      - payment_method
+      properties:
+        payment_method:
+          type: string
+          enum:
+          - QPay
+          - BankCard
+          - CashOnDelivery
+          example: QPay
+      example:
+        payment_method: QPay
+    SavedPayment:
+      type: object
+      required:
+      - order_id
+      - payment_method
+      properties:
+        order_id:
+          type: string
+          example: draft_1024
+        payment_method:
+          type: string
+          example: QPay
+      example:
+        order_id: draft_1024
+        payment_method: QPay
+    PlaceOrder:
+      type: object
+      required:
+      - cart_id
+      - address
+      - payment_method
+      properties:
+        cart_id:
+          type: string
+          example: cart_101
+        address:
+          $ref: '#/components/schemas/Address'
+        payment_method:
+          type: string
+          enum:
+          - QPay
+          - BankCard
+          - CashOnDelivery
+          example: QPay
+      example:
+        cart_id: cart_101
+        address:
+          district: Сүхбаатар
+          khoroo: 8
+          street: Бага тойруу 12-5
+          phone: '99112233'
+        payment_method: QPay
+    OrderResult:
+      type: object
+      required:
+      - order_id
+      - status
+      - total_mnt
+      properties:
+        order_id:
+          type: string
+          example: FF-1024
+        status:
+          type: string
+          enum:
+          - Pending
+          - Confirmed
+          - Preparing
+          - Out for delivery
+          - Delivered
+          - Cancelled
+          example: Pending
+        total_mnt:
+          type: integer
+          example: 39000
+      example:
+        order_id: FF-1024
+        status: Pending
+        total_mnt: 39000

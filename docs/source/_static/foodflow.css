@@ -1,0 +1,13 @@
+body {font-family: Arial, "Segoe UI", sans-serif; color: #24333a;}
+div.document {margin: 30px auto;}
+div.body {max-width: 880px; padding: 22px 36px 48px;}
+div.body h1, div.body h2, div.body h3 {font-family: inherit; color: #153d43;}
+div.body h1 {border-bottom: 2px solid #b9dcd0; padding-bottom: 12px;}
+div.body p, div.body li {line-height: 1.7;}
+table.docutils {border-collapse: collapse; width: 100%; font-size: 0.9em;}
+table.docutils th {background: #e8f2ee;}
+table.docutils td, table.docutils th {padding: 9px 11px; border: 1px solid #d6e0dc;}
+div.highlight {border-radius: 6px; border: 1px solid #d6e0dc;}
+div.sphinxsidebar {font-size: 14px;}
+div.sphinxsidebar a {color: #235e60;}
+@media(max-width: 875px) {div.body {padding: 15px;} table.docutils {display:block; overflow-x:auto;}}

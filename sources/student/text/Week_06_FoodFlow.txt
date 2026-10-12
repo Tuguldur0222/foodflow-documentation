@@ -1,0 +1,180 @@
+PAGE 1
+Week 06 — Code Documentation & AI Auditing
+Төсөл: FoodFlow · Оюутан: Ю. Төгөлдөр · Код: 23B1NUM2350 · Хэлбэр: хар цагаан, энгийн тайлан 
+· Огноо: 2026-10-12
+1. Зорилго, хамрах хүрээ
+W01–W05-д FoodFlow-ийн хэрэглэгч, FR-11–13 шаардлага, ADR-002/003, W05-ийн OpenAPI болон 
+сургалтын HTTP mock-ийг бэлтгэсэн. W06-д захиалга үүсгэх, өөрийн захиалгыг унших, цуцлах 
+жижиг Python сургалтын модуль сонгов. Энэ нь production захиалгын систем биш; in-memory 
+төлөвтэй, төлбөр татахгүй. Жишээг ижил домэйнд тогтоосон: customer_101, cart_101, FF-1024, 
+QPay, 18,000₮ бараа + 3,000₮ хүргэлт = 21,000₮. W05-ийн 39,000₮ жишээ нь quantity=2 сагсны өөр 
+хувилбар юм.
+User story Хийсэн ажил, шалгах баримт Төлөв
+US-6.1 foodflow/order_service.py дахь 
+module, class, constructor, гурван 
+public method-ын Google-style 
+docstring; tests/test_order_service.py
+Локал шалгалт амжилттай
+US-6.2 docs/source/
+{conf.py,index.rst,api.rst}, 
+requirements-docs.txt, .gitlab-ci.yml
+Тохируулга бэлэн; Sphinx build, GitLab 
+pipeline, Pages URL баталгаажаагүй
+US-6.3 review/manual_docstring.py, 
+ai_candidate_docstring.py, 
+manual_vs_ai.diff, 
+bhatti_audit_table.md, reflection test
+AI-style жишээний аудит бэлэн; 
+GPT-4/Claude-ийн бодит ажиллуулалт 
+хийгдээгүй
+US-6.4 Source TODO/FIXME scan 0; 
+review/technical_debt.md, хоёр issue 
+draft
+Comment цэвэр; бодит GitLab Issues 
+үүсгээгүй
+2. US-6.1 — Public API docstrings
+API хил: foodflow/__init__.py-ийн __all__ нь OrderService-ийг export хийнэ. order_service.py-ийн 
+module docstring ба OrderService class docstring, __init__, place_order, get_order, cancel_order тус 
+бүр тайлбар, оролт, буцаах утга, алдаа, ажиллах жишээтэй. copy, json нь импортолсон стандарт 
+сан; _orders, _idempotency, _next_id нь private state бөгөөд тайлбарласан comment-той. API-н 
+тогтвортой гадаргуу нь гурван үйлдэл; HTTP Handler бол W05-ийн тусдаа mock сургалтын 
+хэрэгсэл.
+Нийтийн тэмдэглэгээ Тайлбарласан оролт Буцаалт ба алдаа W03/W04 холбоо
+Module, OrderService Төлөв санах зааг, домэйн 
+жишээ
+In-memory, no payment 
+гэсэн хязгаар
+ADR-002-ын durable 
+шийдвэрийг орлохгүй
+__init__ Параметргүй Хоосон store; FF-1024-өөс 
+эхэлнэ
+Сургалтын үндсэн төлөв
+place_order owner, cart, subtotal, fee, 
+method, idempotency key
+dict; ValueError 
+invalid/conflicting key
+FR-11, NFR-02, ADR-003
+
+PAGE 2
+Нийтийн тэмдэглэгээ Тайлбарласан оролт Буцаалт ба алдаа W03/W04 холбоо
+get_order order ID, owner ID dict; KeyError, 
+PermissionError
+FR-12, NFR-03
+cancel_order order ID, owner ID dict; KeyError, 
+PermissionError, 
+ValueError
+FR-13-ийн Pending хэсэг
+Нэг хэвийн чанар: Жишээ бүр OrderService()-ийг шинэчилж эхэлдэг, модулийн хооронд order ID-г 
+таамаглан хуваалцдаггүй. place_order-ийн буцаалт нь хуулбар; гаднаас status солиход хадгалсан 
+төлөв өөрчлөгдөхгүй. Ижил key ба ижил payload өмнөх ID-г буцаана; ижил key ба өөр payload 
+алдаа. get_order нь эзэмшигчийг шалгана. cancel_order зөвхөн Pending үед ажиллана; W03-ийн 
+Confirmed төлөвийг энэ жижиг сургалтын модуль одоогоор үүсгэхгүй. Chinchilla-ийн зургаан зарчмыг 
+уншигчид чиглэсэн жишээ, зөв бүтэц, тогтвортой нэршил, шалгаж болох өгүүлбэр, хайхад амар API 
+хуудас, кодтой хамт шинэчлэх урсгалаар хэрэгжүүлэв; номын яг үгчилсэн дүрэм гэж мэдүүлээгүй.
+3. US-6.2 — Sphinx болон GitLab CI/CD
+docs/source/conf.py нь autodoc, napoleon өргөтгөлтэй. api.rst нь Python module-ийн public 
+members-ийг авч, index.rst-д API холбоос оруулсан. .gitlab-ci.yml хоёр шаттай: тестийн шатанд 
+W05/W06 unit, doctest; default branch дээр Pages шатанд requirements-docs.txt-аас Sphinx суулгаад 
+sphinx-build -W --keep-going -b html docs/source public ажиллуулна. -W анхааруулгыг бүтэлгүй 
+build болгоно. Pages-ийн publish: public болон artifact path нь нэг хавтаст заана. Repo-г GitLab-д 
+оруулсны дараа project-ийн CI/CD Pages URL-г шалгаж баримтжуулах ёстой.
+Орон нутгийн бодит туршилт: python -m sphinx -W -b html docs/source /tmp/foodflow-sphinx-
+build → exit 1, No module named sphinx. pip install хийж үзэхэд орчны proxy Operation not 
+permitted гэж буцсан. review/sphinx_build_log.txt-д команд ба үр дүн хадгалагдсан. Иймд zero-
+warning Sphinx HTML, green GitLab pipeline, public Pages URL гурвыг DoD-д биелсэн гэж 
+тооцоогүй. W05-ийн public/swagger.html нь өмнөх OpenAPI preview бөгөөд Sphinx-ийн үр дүн гэж 
+үзэхгүй. GitLab CI-д package registry, runner, Pages тохируулгыг ажиллуулах бодит орчин хэрэгтэй.
+4. US-6.3, UE-6 — Manual vs. AI аудит
+(a) Гараар бичсэн эх
+review/manual_docstring.py нь нийтэлсэн module-ийн snapshot. Public symbol бүрт Args, Returns, 
+Raises, Example бичсэн. Constructor-ийн параметр ба exception байхгүйг тодорхой тэмдэглэсэн. 
+python -m doctest foodflow/order_service.py амжилттай дууссан. Зөвхөн class-ын жишээг уншаад 
+хэрэглэгч place_order-ийг бие даан туршиж чадна.
+(b) AI-style хувилбар ба Bhatti audit
+review/ai_candidate_docstring.py нь энэ ажилд зохиож байгуулсан AI-style candidate. 
+GPT-4/Claude-ийн бодит prompt/output биш. Яг ижил module-ийн executable code-ийг үлдээн 
+docstring-ийн дөрвөн хэсгийг солив. review/manual_vs_ai.diff-д мөрийн зөрүү бий. 
+
+PAGE 3
+review/bhatti_audit_table.md таван зарчмыг (Explained, Concise, Clear, Usable, Trustworthy) нэг 
+бүрчлэн үнэлсэн.
+Олдсон зөрүү Код/тестээр баталгаажуулсан баримт Гараар хийсэн засвар
+refund_order нэртэй ghost API hasattr(OrderService, 
+"refund_order") = false
+Public class тайлбараас арилгасан
+Delivered төлөвтэй захиалгыг цуцална 
+гэсэн өгүүлбэр
+cancel_order зөвхөн Pending-д 
+ажиллана
+Pending гэсэн хязгаарыг сэргээсэн
+Ижил key, өөр payload шинэ захиалга 
+үүсгэнэ гэсэн өгүүлбэр
+place_order ValueError өгнө Зөрчилтэй key-г retry хийхгүйг 
+тайлбарласан
+Use–Verify–Cite: claim, reflection/code test, repo доторх эх сурвалж, шийдвэрийг audit log-д мөр 
+бүрээр үлдээсэн. Тайлбарын цэгцтэй өнгө аясыг үнэн гэж үзээгүй; code ба test-д тулгасан. Нэрлэсэн 
+GPT-4/Claude туршилт хийх үед prompt, model/date, түүхий output, шинэ diff-ийг хавсаргаж, ижил 
+таван зарчмаар дахин үнэлнэ.
+(c) Sphinx интеграц
+Зассан public module foodflow/order_service.py-д орсон. autodoc import path-ыг conf.py шийдсэн. 
+Sphinx суулгалт энэ орчинд бүтэлгүй тул HTML болон zero-warning build log одоогоор гараагүй; 
+Section 3 дахь заавраар runner дээр дахин ажиллуулна.
+(d) Reflection bonus
+tests/test_ai_hallucinations.py нь draft class docstring-ээс backtick доторх *_order нэрсийг AST-гаар 
+уншиж, hasattr reflection-оор бодит class-тай тулгана. refund_order гэсэн ганц ghost method 
+олдсоныг, нийтэлсэн class тайлбарт ороогүйг assert хийнэ. Мөн буруу cancellation/key өгүүлбэр 
+нийтлэгдээгүйг шалгана. Энэ тест нь candidate-г зориуд буруу гэж илрүүлдэг, pipeline-г зориуд 
+унагаадаг тест биш.
+5. US-6.4 — Technical debt
+rg -n 'TODO|FIXME' foodflow examples tests --glob '*.py' хайлт 0 мөр буцаав. Inline TODO/FIXME 
+байхгүй учраас зохиомол # TODO(#123) мөр нэмээгүй. Харин бодит хоёр хязгаарын GitLab issue 
+body-г .gitlab/issue_templates/ дотор бэлтгэсэн: durable order/idempotency хадгалалт, FR-13-ийн 
+Confirmed cancellation. review/technical_debt.md-д evidence, acceptance, ID-г хожим бодит GitLab 
+дээр бүртгэх ажлыг тэмдэглэсэн. Issue үүсгэсний дараа үлдэх comment заавал бодит ID-тай # 
+TODO(#<ID>): ... хэлбэртэй байна.
+6. Шалгалтын үр дүн, DoD
+Шалгалт Бодит үр дүн
+python -m unittest discover -s tests -p 
+'test_*order_service.py' -v
+4 тест OK
+python -m unittest discover -s tests -p 
+'test_ai_hallucinations.py' -v
+2 тест OK; ghost API илэрсэн
+python -m doctest foodflow/order_service.py Exit 0
+Inline TODO/FIXME scan 0 мөр
+
+PAGE 4
+Шалгалт Бодит үр дүн
+Бүх W05/W06 тестийг энэ sandbox-д ажиллуулах W05 HTTP mock loopback нээгдэхгүй, setUpClass 
+алдаатай; CI орчинд шалгана
+Sphinx -W HTML No module named sphinx; HTML үүсээгүй
+GitLab CI green, Pages URL, бодит Issues GitLab project/runner энэ орчинд холбогдоогүй, 
+баталгаажаагүй
+DoD шийдвэр: docstring, audit matrix, хоёр засвар, ghost detection, TODO inventory бэлэн. Sprint 06-
+ийн бүрэн DoD-д хүрэхийн тулд нэрлэсэн model audit, Sphinx warning-free build, green pipeline, public 
+Pages URL, хэрэгтэй issue-үүдийг бодит GitLab-д үүсгэж шалгана. Тэдгээрийг хийгдсэн мэт 
+тэмдэглэхгүй.
+7. Agile ceremonies
+Standup. (1) Module, class, constructor, 3 method буюу 6 баримтжуулсан public объект/хэсэг байна; 
+export symbol нь OrderService. (2) Локал Sphinx байхгүй, GitLab CI green төлөв мэдэгдэхгүй. (3) 
+refund_order ghost API болон хоёр буруу зан үйлийн өгүүлбэрийг шалгалтаар оллоо.
+Retrospective. Google-style Args/Returns/Raises/Example нь уншигчид хамгийн тодорхой болж, 
+Sphinx napoleon-д тохирно. Шууд засах ёстой хэсэг нь payment refund амлалт, Delivered cancellation, 
+idempotency key-ийн буруу тайлбар байв. Sprint 7-д candidate-ийн эх prompt/model-ийг хадгалах, 
+runner дээр -W gate ажиллуулах, issue ID-гаар өр төлбөрөө бүртгэх ажлыг эхлүүлнэ.
+Reflection 1 — Bhatti: “код өөрөө хэлнэ” гээд төлөв, алдаа, owner-ийн хязгаарыг комментгүй орхих 
+нь хуурамч итгэл төрүүлнэ. Comment нь одоогийн кодтой зөрвөл арилгах буюу issue болгох 
+хэрэгтэй.
+Reflection 2 — Chinchilla: Нэг домэйны тогтмол жишээ, уншигчийн хийх үйлдэл, doc build-ийг CI 
+gate-д холбох зарчмыг дараагийн API бүрд хэрэглэнэ.
+Reflection 3 — Ном ба багийн бодит ажил: Номын ideal audit/build урсгал ба энэ сургалтын 
+sandbox-ийн хооронд package network, GitLab runner, бодит peer review дутуу байна. Локал тестийн 
+нотолгоо, бэлтгэсэн CI, хүлээгдэж буй гаднах шалгалтыг салгаж бүртгэх нь зөв.
+8. Эх сурвалж, үргэлжлэл
+W06 handout: Sprint 06 Lab Instructions – GitLab & Code Documentation, pp. 1–2; хичээлийн заасан 
+уншлага Bhatti et al., Docs for Developers, Ch. 4–5; Chinchilla, Technical Writing for Software 
+Developers, Ch. 6–7, 9. Тэдгээр номын бүтэн текст энэ ажилд өгөөгүй тул chapter-level холбоог 
+handout-аар тэмдэглэсэн, үгчилсэн эшлэл буюу хуудасны доторх баталгааг зохиогоогүй. Төслийн 
+мөрдөх холбоо: W03 week-03.md FR-11–13, W04 adr/ADR-002-persistence.md, adr/ADR-003-
+interface.md, W05 docs/openapi/openapi.yaml. GitLab-д repo push хийсний дараа pipeline, Pages, 
+issue-үүдийн бодит URL ба ID-г энэ тайланд шинэчилнэ.

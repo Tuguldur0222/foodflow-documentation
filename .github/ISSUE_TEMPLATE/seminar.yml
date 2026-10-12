@@ -1,0 +1,22 @@
+name: Дараагийн семинар
+description: Handout-ийн ажил, artifact, шалгуурыг төлөвлөх
+title: "Семинар: "
+body:
+  - type: input
+    id: week
+    attributes:
+      label: Семинарын дугаар ба handout
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria ба UE дасгал
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Өөрчлөх баримт, код, тест
+    validations:
+      required: true

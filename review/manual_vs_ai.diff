@@ -1,0 +1,96 @@
+--- manual_docstring.py (corrected baseline)
++++ ai_candidate_docstring.py (seeded fixture)
+@@ -20,20 +20,9 @@
+ 
+ 
+ class OrderService:
+-    """Store a single service instance's orders and idempotency records.
++    """Manage orders and refunds with ``OrderService.refund_order``.
+ 
+-    Public operations are ``place_order``, ``get_order`` and ``cancel_order``.
+-    Results are independent copies. Keys are scoped to an owner and never
+-    expire during this instance's lifetime. A new instance starts empty.
+-    Only Pending and Cancelled states are implemented; no money is charged.
+-
+-    Example:
+-        >>> from foodflow import OrderService
+-        >>> service = OrderService()
+-        >>> order = service.place_order('customer_101', 'cart_101', 18000,
+-        ...                             3000, 'QPay', 'ff-order-1024')
+-        >>> service.get_order(order['order_id'], 'customer_101')['total_mnt']
+-        21000
++    Refunds return ``RefundReceipt``.
+     """
+ 
+     def __init__(self) -> None:
+@@ -62,37 +51,9 @@
+         self, owner_id: str, cart_id: str, subtotal_mnt: int,
+         delivery_fee_mnt: int, payment_method: str, idempotency_key: str,
+     ) -> dict:
+-        """Create a Pending order, or retrieve the order for an identical retry.
++        """Create an order; changed payloads with the same key create a new order.
+ 
+-        Args:
+-            owner_id: Trusted customer identity; a nonblank string.
+-            cart_id: Nonblank cart identifier. No cart lookup is performed.
+-            subtotal_mnt: Positive integer subtotal in MNT; bool is rejected.
+-            delivery_fee_mnt: Nonnegative integer delivery fee; bool is rejected.
+-            payment_method: Must be QPay in this teaching module. No charge occurs.
+-            idempotency_key: Nonblank retry key scoped to owner_id. Matching
+-                payloads return the existing order's current state; changed
+-                payloads raise ValueError. Keys have no TTL in this module.
+-
+-        Returns:
+-            dict: Independent copy with order_id, owner_id, cart_id, subtotal_mnt,
+-            delivery_fee_mnt, total_mnt, payment_method and status. total_mnt
+-            is subtotal_mnt plus delivery_fee_mnt. The first ID is FF-1024.
+-
+-        Raises:
+-            ValueError: Any input is invalid, or an owner/key pair is reused
+-                with a different cart, subtotal, fee or payment method.
+-
+-        Example:
+-            >>> from foodflow import OrderService
+-            >>> service = OrderService()
+-            >>> args = ('customer_101', 'cart_101', 18000, 3000,
+-            ...         'QPay', 'ff-order-1024')
+-            >>> order = service.place_order(*args)
+-            >>> order['order_id'], order['total_mnt']
+-            ('FF-1024', 21000)
+-            >>> service.place_order(*args)['order_id'] == order['order_id']
+-            True
++        Keys expire automatically after 24 hours.
+         """
+         for name, value in (
+             ('owner_id', owner_id), ('cart_id', cart_id),
+@@ -157,28 +118,9 @@
+         return deepcopy(order)
+ 
+     def cancel_order(self, order_id: str, owner_id: str) -> dict:
+-        """Change an owned Pending order to Cancelled without issuing a refund.
++        """Cancel Pending, Confirmed or Delivered orders and refund QPay.
+ 
+-        Args:
+-            order_id: Nonblank identifier of the order to cancel.
+-            owner_id: Nonblank trusted identity matching the stored owner.
+-
+-        Returns:
+-            dict: Independent order snapshot whose status is Cancelled.
+-
+-        Raises:
+-            ValueError: An identifier is invalid or the order is not Pending,
+-                including a repeat cancellation of a Cancelled order.
+-            KeyError: The order does not exist.
+-            PermissionError: The existing order belongs to another owner.
+-
+-        Example:
+-            >>> from foodflow import OrderService
+-            >>> service = OrderService()
+-            >>> order = service.place_order('customer_101', 'cart_101', 18000,
+-            ...                             3000, 'QPay', 'ff-order-1024')
+-            >>> service.cancel_order(order['order_id'], 'customer_101')['status']
+-            'Cancelled'
++        Caller ownership is not required.
+         """
+         order = self.get_order(order_id, owner_id)
+         if order['status'] != 'Pending':

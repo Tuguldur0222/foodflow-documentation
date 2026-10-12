@@ -1,0 +1,57 @@
+$ C:\Users\tuugu\anaconda3\python.exe -m unittest discover -s tests -v
+test_all_published_public_methods_exist (test_ai_hallucinations.HallucinationTests.test_all_published_public_methods_exist) ... ok
+test_candidate_and_corrected_implementation_are_identical (test_ai_hallucinations.HallucinationTests.test_candidate_and_corrected_implementation_are_identical) ... ok
+test_corrected_snapshot_has_no_missing_symbol (test_ai_hallucinations.HallucinationTests.test_corrected_snapshot_has_no_missing_symbol) ... ok
+test_fixture_exposes_missing_method_and_type (test_ai_hallucinations.HallucinationTests.test_fixture_exposes_missing_method_and_type) ... ok
+test_address_and_payment_validation (test_mock_api.MockAPITests.test_address_and_payment_validation) ... ok
+test_auth_scheme_is_case_insensitive_but_token_is_case_sensitive (test_mock_api.MockAPITests.test_auth_scheme_is_case_insensitive_but_token_is_case_sensitive) ... ok
+test_bad_json_content_type_oversize_and_unexpected_fields (test_mock_api.MockAPITests.test_bad_json_content_type_oversize_and_unexpected_fields) ... ok
+test_cache_expires_after_24_hours_without_reopening_cart (test_mock_api.MockAPITests.test_cache_expires_after_24_hours_without_reopening_cart) ... ok
+test_corgly_auth_and_validation (test_mock_api.MockAPITests.test_corgly_auth_and_validation) ... ok
+test_corgly_three_standalone_python_samples (test_mock_api.MockAPITests.test_corgly_three_standalone_python_samples) ... ok
+test_empty_cart_and_missing_idempotency_key (test_mock_api.MockAPITests.test_empty_cart_and_missing_idempotency_key) ... ok
+test_five_samples_match_openapi_response_examples (test_mock_api.MockAPITests.test_five_samples_match_openapi_response_examples) ... ok
+test_keys_are_scoped_to_customer (test_mock_api.MockAPITests.test_keys_are_scoped_to_customer) ... ok
+test_malformed_webhook_urls_are_client_errors (test_mock_api.MockAPITests.test_malformed_webhook_urls_are_client_errors) ... ok
+test_missing_resources_and_duplicate_item (test_mock_api.MockAPITests.test_missing_resources_and_duplicate_item) ... ok
+test_one_hundred_parallel_retries_create_one_order (test_mock_api.MockAPITests.test_one_hundred_parallel_retries_create_one_order) ... ok
+test_other_customer_cannot_access_cart_or_draft (test_mock_api.MockAPITests.test_other_customer_cannot_access_cart_or_draft) ... ok
+test_quantity_type_and_bounds_are_checked (test_mock_api.MockAPITests.test_quantity_type_and_bounds_are_checked) ... ok
+test_repeated_large_rejections_deliver_complete_json_errors (test_mock_api.MockAPITests.test_repeated_large_rejections_deliver_complete_json_errors) ... ok
+test_same_key_same_body_replays_and_different_body_conflicts (test_mock_api.MockAPITests.test_same_key_same_body_replays_and_different_body_conflicts) ... ok
+test_static_docs_serve_same_spec_and_unknown_route_is_404 (test_mock_api.MockAPITests.test_static_docs_serve_same_spec_and_unknown_route_is_404) ... ok
+test_submitted_cart_and_draft_are_locked (test_mock_api.MockAPITests.test_submitted_cart_and_draft_are_locked) ... ok
+test_unauthorized_requests_all_five_operations (test_mock_api.MockAPITests.test_unauthorized_requests_all_five_operations) ... ok
+test_unexpected_failure_returns_documented_500_envelope (test_mock_api.MockAPITests.test_unexpected_failure_returns_documented_500_envelope) ... ok
+test_unfinished_oversized_upload_does_not_block_error_or_drain_forever (test_mock_api.MockAPITests.test_unfinished_oversized_upload_does_not_block_error_or_drain_forever) ... ok
+test_all_schema_and_property_examples_are_valid (test_openapi.OpenAPIContractTests.test_all_schema_and_property_examples_are_valid) ... ok
+test_duplicate_yaml_keys_are_rejected (test_openapi.OpenAPIContractTests.test_duplicate_yaml_keys_are_rejected) ... ok
+test_every_reference_resolves (test_openapi.OpenAPIContractTests.test_every_reference_resolves) ... ok
+test_five_unique_operations_and_security (test_openapi.OpenAPIContractTests.test_five_unique_operations_and_security) ... ok
+test_path_parameters_requests_and_response_examples (test_openapi.OpenAPIContractTests.test_path_parameters_requests_and_response_examples) ... ok
+test_phone_schema_rejects_trailing_newline (test_openapi.OpenAPIContractTests.test_phone_schema_rejects_trailing_newline) ... ok
+test_renderer_decision_contains_exactly_100_whitespace_words (test_openapi.OpenAPIContractTests.test_renderer_decision_contains_exactly_100_whitespace_words) ... ok
+test_validator_detects_bad_quantities_and_extra_fields (test_openapi.OpenAPIContractTests.test_validator_detects_bad_quantities_and_extra_fields) ... ok
+test_100_identical_retries_create_one_order (test_order_service.OrderServiceTests.test_100_identical_retries_create_one_order) ... ok
+test_100_other_owners_are_denied (test_order_service.OrderServiceTests.test_100_other_owners_are_denied) ... ok
+test_cancel_pending (test_order_service.OrderServiceTests.test_cancel_pending) ... ok
+test_cancellation_checks_owner (test_order_service.OrderServiceTests.test_cancellation_checks_owner) ... ok
+test_changed_payload_conflicts (test_order_service.OrderServiceTests.test_changed_payload_conflicts) ... ok
+test_create_schema_and_price (test_order_service.OrderServiceTests.test_create_schema_and_price) ... ok
+test_instances_start_empty (test_order_service.OrderServiceTests.test_instances_start_empty) ... ok
+test_invalid_creation_inputs (test_order_service.OrderServiceTests.test_invalid_creation_inputs) ... ok
+test_invalid_lookup_identifiers (test_order_service.OrderServiceTests.test_invalid_lookup_identifiers) ... ok
+test_keys_are_owner_scoped (test_order_service.OrderServiceTests.test_keys_are_owner_scoped) ... ok
+test_missing_order (test_order_service.OrderServiceTests.test_missing_order) ... ok
+test_repeat_cancellation_is_rejected (test_order_service.OrderServiceTests.test_repeat_cancellation_is_rejected) ... ok
+test_retry_after_cancellation_returns_current_state (test_order_service.OrderServiceTests.test_retry_after_cancellation_returns_current_state) ... ok
+test_returned_data_cannot_mutate_store (test_order_service.OrderServiceTests.test_returned_data_cannot_mutate_store) ... ok
+test_two_item_example_is_39000 (test_order_service.OrderServiceTests.test_two_item_example_is_39000) ... ok
+test_zero_delivery_fee (test_order_service.OrderServiceTests.test_zero_delivery_fee) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 4.070s
+
+OK
+
+EXIT CODE: 0

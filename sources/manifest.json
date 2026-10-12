@@ -1,0 +1,67 @@
+[
+  {
+    "file": "PHTBB4.pdf",
+    "sha256": "8ad5a114dfe277c7a61f95357711d12d8019ad230c6032f9a2a6f855e73c5458",
+    "bytes": 288760
+  },
+  {
+    "file": "PHTBB5 (1).pdf",
+    "sha256": "e2c3601b1effb0db3e176d58b00caf4d5f03d20eb78452d34728a121404bb95a",
+    "bytes": 275095
+  },
+  {
+    "file": "PHTBB5.yaml",
+    "sha256": "e459a5c04f910d47377ac163d3189cf6e92018550cbc0bbd00f7aff8190c32a5",
+    "bytes": 20066
+  },
+  {
+    "file": "Software Project Documentation - Week 04 Lab Assignment.pdf",
+    "sha256": "ba38de209957bb300db35faa52d15edaaa510111d9940c5ec648d429e9397b5a",
+    "bytes": 436672
+  },
+  {
+    "file": "Software_Project_Documentation_Week_01_Handout.pdf",
+    "sha256": "c9b7d30a1450c3a760aac5ff38621c383c2e125c7972d117d01935b0380f1ae7",
+    "bytes": 74031
+  },
+  {
+    "file": "Software_Project_Documentation_Week_02_Handout.pdf",
+    "sha256": "8d4cb7deda4d24d3b2029962589107fb9a2453e14c0a6b2f11baaeca0992374b",
+    "bytes": 30999
+  },
+  {
+    "file": "Software_Project_Documentation_Week_03_Handout.pdf",
+    "sha256": "6647cae1fd618ab23f663f7ee30ad5d3b295a8684076f2150fb83d3329b7b801",
+    "bytes": 140532
+  },
+  {
+    "file": "Sprint 05 Lab Instructions - OpenAPI 3.0 & Bhatti Code Samples (1).pdf",
+    "sha256": "60682f8ca1a68547edf827b34c73419fac45d3a1981f690f738afed938428261",
+    "bytes": 547339
+  },
+  {
+    "file": "Sprint 05 Lab Instructions - OpenAPI 3.0 & Bhatti Code Samples.pdf",
+    "sha256": "60682f8ca1a68547edf827b34c73419fac45d3a1981f690f738afed938428261",
+    "bytes": 547339
+  },
+  {
+    "file": "Sprint 06 Lab Instructions - GitLab & Code Documentation.pdf",
+    "sha256": "ce73fc03be373d15cbadabbadd72408df65a7a35d66072338bfa8250c5fae573",
+    "bytes": 386769
+  },
+  {
+    "file": "Week_01_FoodFlow.docx",
+    "sha256": "2a51751e60720ddd6abf743a884c442873e0548277d39f9c86d087d58ea02046",
+    "bytes": 18651
+  },
+  {
+    "file": "Week_02_FoodFlow.docx",
+    "sha256": "a39034cafd3be09b593a385ed314ac8c0a783b050279af6692a4b3dcd1c6aefd",
+    "bytes": 17697
+  },
+  {
+    "file": "Week_03_FoodFlow.docx",
+    "sha256": "adfe5579a8e1b760a9e536f85f21bcd940abc64fd47db4abeb2b46e381c8ffa9",
+    "bytes": 40449
+  }
+]

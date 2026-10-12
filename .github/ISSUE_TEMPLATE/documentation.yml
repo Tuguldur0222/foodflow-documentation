@@ -1,0 +1,23 @@
+name: Баримтжуулалтын засвар
+description: Найруулга, холбоос, шаардлага, нотолгооны зөрүү
+title: "Баримтын засвар: "
+body:
+  - type: input
+    id: file
+    attributes:
+      label: Аль файл / семинар вэ?
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Ямар зөрүү байна вэ?
+      description: Одоогийн текст, хүлээгдэж буй утга, source холбоос.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Дууссаныг яаж шалгах вэ?
+    validations:
+      required: true

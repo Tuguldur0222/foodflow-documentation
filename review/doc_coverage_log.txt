@@ -1,0 +1,5 @@
+$ C:\Users\tuugu\anaconda3\python.exe tools/check_docs.py
+4/4 public callables have structured docs and named parameters.
+0 inline TODO/FIXME comments in foodflow/ and tests/.
+
+EXIT CODE: 0

@@ -1,0 +1,127 @@
+$ C:\Users\tuugu\anaconda3\python.exe -m doctest -v foodflow/order_service.py
+Trying:
+    from foodflow import OrderService
+Expecting nothing
+ok
+Trying:
+    service = OrderService()
+Expecting nothing
+ok
+Trying:
+    order = service.place_order('customer_101', 'cart_101', 18000, 3000,
+                                'QPay', 'ff-order-1024')
+Expecting nothing
+ok
+Trying:
+    order['order_id'], order['total_mnt'], order['status']
+Expecting:
+    ('FF-1024', 21000, 'Pending')
+ok
+Trying:
+    from foodflow import OrderService
+Expecting nothing
+ok
+Trying:
+    service = OrderService()
+Expecting nothing
+ok
+Trying:
+    order = service.place_order('customer_101', 'cart_101', 18000,
+                                3000, 'QPay', 'ff-order-1024')
+Expecting nothing
+ok
+Trying:
+    service.get_order(order['order_id'], 'customer_101')['total_mnt']
+Expecting:
+    21000
+ok
+Trying:
+    from foodflow import OrderService
+Expecting nothing
+ok
+Trying:
+    service = OrderService()
+Expecting nothing
+ok
+Trying:
+    isinstance(service, OrderService)
+Expecting:
+    True
+ok
+Trying:
+    from foodflow import OrderService
+Expecting nothing
+ok
+Trying:
+    service = OrderService()
+Expecting nothing
+ok
+Trying:
+    order = service.place_order('customer_101', 'cart_101', 18000,
+                                3000, 'QPay', 'ff-order-1024')
+Expecting nothing
+ok
+Trying:
+    service.cancel_order(order['order_id'], 'customer_101')['status']
+Expecting:
+    'Cancelled'
+ok
+Trying:
+    from foodflow import OrderService
+Expecting nothing
+ok
+Trying:
+    service = OrderService()
+Expecting nothing
+ok
+Trying:
+    order = service.place_order('customer_101', 'cart_101', 18000,
+                                3000, 'QPay', 'ff-order-1024')
+Expecting nothing
+ok
+Trying:
+    service.get_order(order['order_id'], 'customer_101')['status']
+Expecting:
+    'Pending'
+ok
+Trying:
+    from foodflow import OrderService
+Expecting nothing
+ok
+Trying:
+    service = OrderService()
+Expecting nothing
+ok
+Trying:
+    args = ('customer_101', 'cart_101', 18000, 3000,
+            'QPay', 'ff-order-1024')
+Expecting nothing
+ok
+Trying:
+    order = service.place_order(*args)
+Expecting nothing
+ok
+Trying:
+    order['order_id'], order['total_mnt']
+Expecting:
+    ('FF-1024', 21000)
+ok
+Trying:
+    service.place_order(*args)['order_id'] == order['order_id']
+Expecting:
+    True
+ok
+1 item had no tests:
+    order_service.OrderService._validate_text
+6 items passed all tests:
+   4 tests in order_service
+   4 tests in order_service.OrderService
+   3 tests in order_service.OrderService.__init__
+   4 tests in order_service.OrderService.cancel_order
+   4 tests in order_service.OrderService.get_order
+   6 tests in order_service.OrderService.place_order
+25 tests in 7 items.
+25 passed.
+Test passed.
+
+EXIT CODE: 0

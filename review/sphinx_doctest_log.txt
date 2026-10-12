@@ -1,0 +1,80 @@
+$ C:\Users\tuugu\anaconda3\python.exe -m sphinx -c docs -E -n -W --keep-going -b doctest . build/doctest
+Running Sphinx v9.1.0
+loading translations [en]... done
+myst v5.1.0: MdParserConfig(commonmark_only=False, gfm_only=False, enable_extensions={'colon_fence'}, disable_syntax=[], all_links_external=False, links_external_new_tab=False, url_schemes=('http', 'https', 'mailto', 'ftp'), ref_domains=None, fence_as_directive={'mermaid'}, number_code_blocks=[], title_to_header=False, heading_anchors=4, heading_slug_func=None, html_meta={}, footnote_sort=True, footnote_transition=True, words_per_minute=200, substitutions={}, linkify_fuzzy_links=True, dmath_allow_labels=True, dmath_allow_space=True, dmath_allow_digits=True, dmath_double_inline=False, update_mathjax=True, mathjax_classes='tex2jax_process|mathjax_process|math|output_area', enable_checkboxes=False, strikethrough_single_tilde=False, colon_fence_exact_match=False, suppress_warnings=[], highlight_code_blocks=True)
+building [mo]: targets for 0 po files that are out of date
+writing output... 
+building [doctest]: targets for 44 source files that are out of date
+updating environment: [new config] 44 added, 0 changed, 0 removed
+reading sources... [  2%] CHANGELOG
+reading sources... [  5%] CONTRIBUTING
+reading sources... [  7%] README
+reading sources... [  9%] docs/api/README
+reading sources... [ 11%] docs/api/renderer-decision
+reading sources... [ 14%] docs/api/sample-audit
+reading sources... [ 16%] docs/architecture/adr/0001-web-app-stack
+reading sources... [ 18%] docs/architecture/adr/0002-persistence-and-idempotency
+reading sources... [ 20%] docs/architecture/adr/0003-versioned-api-contract
+reading sources... [ 23%] docs/architecture/adr/0004-container-responsibilities
+reading sources... [ 25%] docs/architecture/adr/index
+reading sources... [ 27%] docs/architecture/index
+reading sources... [ 30%] docs/architecture/ue-4-rework
+reading sources... [ 32%] docs/audience/corg-ly-exercise
+reading sources... [ 34%] docs/audience/personas
+reading sources... [ 36%] docs/glossary
+reading sources... [ 39%] docs/index
+reading sources... [ 41%] docs/project/catalog
+reading sources... [ 43%] docs/project/issues/confirmed-cancellation
+reading sources... [ 45%] docs/project/issues/durable-orders
+reading sources... [ 48%] docs/project/provenance
+reading sources... [ 50%] docs/project/publishing
+reading sources... [ 52%] docs/project/roadmap
+reading sources... [ 55%] docs/project/status
+reading sources... [ 57%] docs/requirements/mockups/index
+reading sources... [ 59%] docs/requirements/scope
+reading sources... [ 61%] docs/requirements/srs
+reading sources... [ 64%] docs/requirements/traceability
+reading sources... [ 66%] docs/semesters/week-01
+reading sources... [ 68%] docs/semesters/week-02
+reading sources... [ 70%] docs/semesters/week-03
+reading sources... [ 73%] docs/semesters/week-04
+reading sources... [ 75%] docs/semesters/week-05
+reading sources... [ 77%] docs/semesters/week-06
+reading sources... [ 80%] docs/source/api
+reading sources... [ 82%] examples/data/README
+reading sources... [ 84%] index
+reading sources... [ 86%] reports/README
+reading sources... [ 89%] review/bhatti_audit_table
+reading sources... [ 91%] review/provenance
+reading sources... [ 93%] review/technical_debt
+reading sources... [ 95%] sources/README
+reading sources... [ 98%] templates/ai-audit
+reading sources... [100%] templates/seminar
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+copying assets... 
+copying assets: done
+running tests...
+
+Document: docs/source/api
+-------------------------
+1 item passed all tests:
+  25 tests in default
+25 tests in 1 item.
+25 passed.
+Test passed.
+
+Doctest summary
+===============
+   25 tests
+    0 failures in tests
+    0 failures in setup code
+    0 failures in cleanup code
+build succeeded.
+
+Testing of doctests in the sources finished, look at the results in build\doctest/output.txt.
+
+EXIT CODE: 0

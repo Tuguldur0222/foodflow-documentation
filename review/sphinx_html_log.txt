@@ -1,0 +1,200 @@
+$ C:\Users\tuugu\anaconda3\python.exe -m sphinx -c docs -E -a -n -W --keep-going -b html . public
+Running Sphinx v9.1.0
+loading translations [en]... done
+myst v5.1.0: MdParserConfig(commonmark_only=False, gfm_only=False, enable_extensions={'colon_fence'}, disable_syntax=[], all_links_external=False, links_external_new_tab=False, url_schemes=('http', 'https', 'mailto', 'ftp'), ref_domains=None, fence_as_directive={'mermaid'}, number_code_blocks=[], title_to_header=False, heading_anchors=4, heading_slug_func=None, html_meta={}, footnote_sort=True, footnote_transition=True, words_per_minute=200, substitutions={}, linkify_fuzzy_links=True, dmath_allow_labels=True, dmath_allow_space=True, dmath_allow_digits=True, dmath_double_inline=False, update_mathjax=True, mathjax_classes='tex2jax_process|mathjax_process|math|output_area', enable_checkboxes=False, strikethrough_single_tilde=False, colon_fence_exact_match=False, suppress_warnings=[], highlight_code_blocks=True)
+building [mo]: all of 0 po files
+writing output... 
+building [html]: all source files
+updating environment: [new config] 44 added, 0 changed, 0 removed
+reading sources... [  2%] CHANGELOG
+reading sources... [  5%] CONTRIBUTING
+reading sources... [  7%] README
+reading sources... [  9%] docs/api/README
+reading sources... [ 11%] docs/api/renderer-decision
+reading sources... [ 14%] docs/api/sample-audit
+reading sources... [ 16%] docs/architecture/adr/0001-web-app-stack
+reading sources... [ 18%] docs/architecture/adr/0002-persistence-and-idempotency
+reading sources... [ 20%] docs/architecture/adr/0003-versioned-api-contract
+reading sources... [ 23%] docs/architecture/adr/0004-container-responsibilities
+reading sources... [ 25%] docs/architecture/adr/index
+reading sources... [ 27%] docs/architecture/index
+reading sources... [ 30%] docs/architecture/ue-4-rework
+reading sources... [ 32%] docs/audience/corg-ly-exercise
+reading sources... [ 34%] docs/audience/personas
+reading sources... [ 36%] docs/glossary
+reading sources... [ 39%] docs/index
+reading sources... [ 41%] docs/project/catalog
+reading sources... [ 43%] docs/project/issues/confirmed-cancellation
+reading sources... [ 45%] docs/project/issues/durable-orders
+reading sources... [ 48%] docs/project/provenance
+reading sources... [ 50%] docs/project/publishing
+reading sources... [ 52%] docs/project/roadmap
+reading sources... [ 55%] docs/project/status
+reading sources... [ 57%] docs/requirements/mockups/index
+reading sources... [ 59%] docs/requirements/scope
+reading sources... [ 61%] docs/requirements/srs
+reading sources... [ 64%] docs/requirements/traceability
+reading sources... [ 66%] docs/semesters/week-01
+reading sources... [ 68%] docs/semesters/week-02
+reading sources... [ 70%] docs/semesters/week-03
+reading sources... [ 73%] docs/semesters/week-04
+reading sources... [ 75%] docs/semesters/week-05
+reading sources... [ 77%] docs/semesters/week-06
+reading sources... [ 80%] docs/source/api
+reading sources... [ 82%] examples/data/README
+reading sources... [ 84%] index
+reading sources... [ 86%] reports/README
+reading sources... [ 89%] review/bhatti_audit_table
+reading sources... [ 91%] review/provenance
+reading sources... [ 93%] review/technical_debt
+reading sources... [ 95%] sources/README
+reading sources... [ 98%] templates/ai-audit
+reading sources... [100%] templates/seminar
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+copying assets... 
+copying downloadable files... [  1%] docs/api/openapi.yaml
+copying downloadable files... [  3%] reports/FoodFlow_Documentation.docx
+copying downloadable files... [  4%] reports/FoodFlow_Documentation.pdf
+copying downloadable files... [  6%] docs/api/swagger.html
+copying downloadable files... [  7%] docs/api/redoc.html
+copying downloadable files... [  9%] examples/foodflow_requests.py
+copying downloadable files... [ 10%] examples/foodflow_requests.sh
+copying downloadable files... [ 11%] examples/corgly_upload_photo.py
+copying downloadable files... [ 13%] examples/corgly_translate_bark.py
+copying downloadable files... [ 14%] examples/corgly_subscribe_webhook.py
+copying downloadable files... [ 16%] docs/architecture/diagrams/context.mmd
+copying downloadable files... [ 17%] docs/architecture/diagrams/context.svg
+copying downloadable files... [ 19%] docs/architecture/diagrams/container.mmd
+copying downloadable files... [ 20%] docs/architecture/diagrams/container.svg
+copying downloadable files... [ 21%] docs/architecture/diagrams/ue4-before.mmd
+copying downloadable files... [ 23%] docs/architecture/diagrams/ue4-before.svg
+copying downloadable files... [ 24%] docs/architecture/diagrams/ue4-after.mmd
+copying downloadable files... [ 26%] docs/architecture/diagrams/ue4-after.svg
+copying downloadable files... [ 27%] sources/manifest.json
+copying downloadable files... [ 29%] review/verification.json
+copying downloadable files... [ 30%] review/unit_tests_log.txt
+copying downloadable files... [ 31%] review/sphinx_html_log.txt
+copying downloadable files... [ 33%] review/sphinx_doctest_log.txt
+copying downloadable files... [ 34%] review/redocly_log.txt
+copying downloadable files... [ 36%] docs/requirements/mockups/menu.svg
+copying downloadable files... [ 37%] docs/requirements/mockups/cart.svg
+copying downloadable files... [ 39%] docs/requirements/mockups/address.svg
+copying downloadable files... [ 40%] docs/requirements/mockups/payment.svg
+copying downloadable files... [ 41%] docs/requirements/mockups/summary.svg
+copying downloadable files... [ 43%] docs/requirements/mockups/status.svg
+copying downloadable files... [ 44%] docs/requirements/mockups/history.svg
+copying downloadable files... [ 46%] tests/test_openapi.py
+copying downloadable files... [ 47%] tests/test_mock_api.py
+copying downloadable files... [ 49%] foodflow/order_service.py
+copying downloadable files... [ 50%] .github/workflows/quality.yml
+copying downloadable files... [ 51%] .gitlab-ci.yml
+copying downloadable files... [ 53%] review/manual_docstring.py
+copying downloadable files... [ 54%] review/ai_candidate_docstring.py
+copying downloadable files... [ 56%] review/manual_vs_ai.diff
+copying downloadable files... [ 57%] tests/test_ai_hallucinations.py
+copying downloadable files... [ 59%] tools/check_docs.py
+copying downloadable files... [ 60%] reports/Week_01_FoodFlow.docx
+copying downloadable files... [ 61%] reports/Week_01_FoodFlow.pdf
+copying downloadable files... [ 63%] reports/Week_02_FoodFlow.docx
+copying downloadable files... [ 64%] reports/Week_02_FoodFlow.pdf
+copying downloadable files... [ 66%] reports/Week_03_FoodFlow.docx
+copying downloadable files... [ 67%] reports/Week_03_FoodFlow.pdf
+copying downloadable files... [ 69%] reports/Week_04_FoodFlow.docx
+copying downloadable files... [ 70%] reports/Week_04_FoodFlow.pdf
+copying downloadable files... [ 71%] reports/Week_05_FoodFlow.docx
+copying downloadable files... [ 73%] reports/Week_05_FoodFlow.pdf
+copying downloadable files... [ 74%] reports/Week_06_FoodFlow.docx
+copying downloadable files... [ 76%] reports/Week_06_FoodFlow.pdf
+copying downloadable files... [ 77%] reports/Scope_Charter.docx
+copying downloadable files... [ 79%] reports/Scope_Charter.pdf
+copying downloadable files... [ 80%] reports/UE_01_Corgly.docx
+copying downloadable files... [ 81%] reports/UE_01_Corgly.pdf
+copying downloadable files... [ 83%] reports/manifest.json
+copying downloadable files... [ 84%] reports/block_data.json
+copying downloadable files... [ 86%] reports/assets/diagram_manifest.json
+copying downloadable files... [ 87%] reports/requirements.txt
+copying downloadable files... [ 89%] reports/requirements-renderer.txt
+copying downloadable files... [ 90%] reports/assets/previews/FoodFlow_Documentation/page-001.png
+copying downloadable files... [ 91%] sources/student/week-01-original.docx
+copying downloadable files... [ 93%] sources/student/week-02-original.docx
+copying downloadable files... [ 94%] sources/student/week-03-original.docx
+copying downloadable files... [ 96%] sources/student/week-04-original.pdf
+copying downloadable files... [ 97%] sources/student/week-05-original.pdf
+copying downloadable files... [ 99%] sources/student/week-05-original.yaml
+copying downloadable files... [100%] sources/student/text/Week_06_FoodFlow.txt
+
+copying static files... 
+Writing evaluated template result to C:\Users\tuugu\OneDrive\Desktop\PHTBB\public\_static\basic.css
+Writing evaluated template result to C:\Users\tuugu\OneDrive\Desktop\PHTBB\public\_static\documentation_options.js
+Writing evaluated template result to C:\Users\tuugu\OneDrive\Desktop\PHTBB\public\_static\language_data.js
+Writing evaluated template result to C:\Users\tuugu\OneDrive\Desktop\PHTBB\public\_static\alabaster.css
+copying static files: done
+copying extra files... 
+copying extra files: done
+copying assets: done
+writing output... [  2%] CHANGELOG
+writing output... [  5%] CONTRIBUTING
+writing output... [  7%] README
+writing output... [  9%] docs/api/README
+writing output... [ 11%] docs/api/renderer-decision
+writing output... [ 14%] docs/api/sample-audit
+writing output... [ 16%] docs/architecture/adr/0001-web-app-stack
+writing output... [ 18%] docs/architecture/adr/0002-persistence-and-idempotency
+writing output... [ 20%] docs/architecture/adr/0003-versioned-api-contract
+writing output... [ 23%] docs/architecture/adr/0004-container-responsibilities
+writing output... [ 25%] docs/architecture/adr/index
+writing output... [ 27%] docs/architecture/index
+writing output... [ 30%] docs/architecture/ue-4-rework
+writing output... [ 32%] docs/audience/corg-ly-exercise
+writing output... [ 34%] docs/audience/personas
+writing output... [ 36%] docs/glossary
+writing output... [ 39%] docs/index
+writing output... [ 41%] docs/project/catalog
+writing output... [ 43%] docs/project/issues/confirmed-cancellation
+writing output... [ 45%] docs/project/issues/durable-orders
+writing output... [ 48%] docs/project/provenance
+writing output... [ 50%] docs/project/publishing
+writing output... [ 52%] docs/project/roadmap
+writing output... [ 55%] docs/project/status
+writing output... [ 57%] docs/requirements/mockups/index
+writing output... [ 59%] docs/requirements/scope
+writing output... [ 61%] docs/requirements/srs
+writing output... [ 64%] docs/requirements/traceability
+writing output... [ 66%] docs/semesters/week-01
+writing output... [ 68%] docs/semesters/week-02
+writing output... [ 70%] docs/semesters/week-03
+writing output... [ 73%] docs/semesters/week-04
+writing output... [ 75%] docs/semesters/week-05
+writing output... [ 77%] docs/semesters/week-06
+writing output... [ 80%] docs/source/api
+writing output... [ 82%] examples/data/README
+writing output... [ 84%] index
+writing output... [ 86%] reports/README
+writing output... [ 89%] review/bhatti_audit_table
+writing output... [ 91%] review/provenance
+writing output... [ 93%] review/technical_debt
+writing output... [ 95%] sources/README
+writing output... [ 98%] templates/ai-audit
+writing output... [100%] templates/seminar
+
+generating indices... genindex py-modindex done
+writing additional pages... search done
+copying images... [ 14%] docs/requirements/mockups/menu.svg
+copying images... [ 29%] docs/requirements/mockups/cart.svg
+copying images... [ 43%] docs/requirements/mockups/address.svg
+copying images... [ 57%] docs/requirements/mockups/payment.svg
+copying images... [ 71%] docs/requirements/mockups/summary.svg
+copying images... [ 86%] docs/requirements/mockups/status.svg
+copying images... [100%] docs/requirements/mockups/history.svg
+
+dumping search index in English (code: en)... done
+dumping object inventory... done
+build succeeded.
+
+The HTML pages are in public.
+
+EXIT CODE: 0

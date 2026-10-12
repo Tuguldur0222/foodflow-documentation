@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+.codex-tools/
+public/
+.pytest_cache/
+build/
+node_modules/
+archive/local/
+source_notes/
+*.log
+/*.pdf
+/*.docx
+/*.zip
+/PHTBB5.yaml
+/report_content.json
+/Week_06_FoodFlow_Improved.md
